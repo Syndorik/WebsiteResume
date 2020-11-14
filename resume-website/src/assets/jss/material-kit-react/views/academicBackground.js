@@ -1,7 +1,6 @@
 import { container, title } from "assets/jss/material-kit-react.js";
 
 import imagesStyle from "assets/jss/material-kit-react/imagesStyles.js";
-
 const profilePageStyle = {
     container,
     contain: {
@@ -23,6 +22,9 @@ const profilePageStyle = {
     },
     addMargin: {
         margin: "20px 0px 20px 0px"
+    },
+    addMarginh1: {
+        margin: "26px 0px 10px 0px"
     },
     downloadButton: {
         color: "#ffffff",
@@ -53,6 +55,17 @@ const profilePageStyle = {
         boxShadow:
             "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
     },
+    sideTitle: {
+        font: "1.2em opensans-bold, sans-serif",
+        textTransform: "uppercase",
+        color: "#313131",
+        letterSpacing: "1px",
+        "& span": {
+            borderBottom: "3px solid #11ABB0",
+            paddingBottom: "6px"
+        }
+
+    },
     title: {
         ...title,
         display: "inline-block",
@@ -79,6 +92,44 @@ const profilePageStyle = {
     fonth1: {
         font: "3vh 'opensans-bold', sans-serif",
         color: "#313131",
+    },
+    fonth3: {
+        font: "25px/30px 'opensans-bold', sans-serif",
+        color: "#313131",
+    },
+    opensansbold: {
+        font: "15px/24px 'opensans-bold', sans-serif"
+    },
+    fontItalic: {
+        fontStyle: "italic !important"
+    },
+    fontBold: {
+        fontStyle: "bold !important"
+    },
+    fonttype: {
+        font: "16px/24px 'Libre Baskerville', serif;"
+    },
+    fontClassic: {
+        font: "15px/24px 'opensans-regular', sans-serif"
+    },
+    marginP: {
+        margin: "9px 0px 18px 0px",
+    },
+    marginSwap: {
+        margin: "0px 0px 30px 0px",
+        textAlign: "justify"
+    },
+    ul: {
+        margin: "0px 0px 0px 0px"
+    },
+    iconbutton: {
+        "&:hover": {
+            backgroundColor: "#ffffff00"
+        }
+    },
+    showmaskText: {
+        padding: "0px 0px 0px 40px",
+        display: "inline-block"
     },
     font: {
         font: "1em 'opensans-regular', sans-serif",

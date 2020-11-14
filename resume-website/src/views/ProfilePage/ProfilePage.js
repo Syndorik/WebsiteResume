@@ -32,13 +32,9 @@ export default function ProfilePage(props) {
         classes.imgFluid
     );
 
-    const paragraphClass = classNames(
-        classes.font,
-
-    )
 
     const alignedIcons = (icon, text) => {
-        return <p className={classes.font}>
+        return <div className={classes.font}>
             <Grid container direction="row" alignItems="center" spacing={2}>
                 <Grid item>
                     {icon}
@@ -47,7 +43,7 @@ export default function ProfilePage(props) {
                     {text}
                 </Grid>
             </Grid>
-        </p>
+        </div>
     }
 
     return (

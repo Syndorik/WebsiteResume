@@ -1,6 +1,4 @@
 import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
 // @material-ui/core components
 import Parallax from "components/Parallax/Parallax.js";
 import { makeStyles } from "@material-ui/core/styles";
@@ -33,7 +31,7 @@ export default function ProfilePage(props) {
             <Parallax filterlight big image={require("assets/img/profile-bg.jpg")} >
                 <Grid container spacing={3} alignItems="center" justify="center">
                     <Grid item xs={3} />
-                    <Grid item xs={6} align="center" justify="center">
+                    <Grid item xs={6} align="center">
                         <h1 className={classes.fonth1}>I'm Alexandre Allani.</h1>
                         <p className={classes.font}>
                             I am a <span className={classes.colorEmph}>datascientist</span> from Paris, I have

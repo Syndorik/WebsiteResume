@@ -14,14 +14,9 @@ const routes = [
         component: ProfilePage,
     },
     {
-        path: "/academic-background",
-        name: "Academic Background",
+        path: "/background",
+        name: "Background",
         component: AcademicBackground,
-    },
-    {
-        path: "/professional-background",
-        name: "Professional Background",
-        component: Home,
     },
     {
         path: "/projects",

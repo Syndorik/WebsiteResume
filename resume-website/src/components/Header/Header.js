@@ -13,12 +13,14 @@ import routes from "routes.js"
 
 // core components
 import styles from "assets/jss/material-kit-react/components/headerStyle.js";
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 const useStyles = makeStyles(styles);
 
 export default function Header(props) {
     const classes = useStyles();
-    const [mobileOpen, setMobileOpen] = React.useState(false);
     const [scrolled, setScrolled] = React.useState(false);
     React.useEffect(() => {
         if (props.changeColorOnScroll) {
@@ -30,9 +32,9 @@ export default function Header(props) {
             }
         };
     });
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
-    };
+
+    cookies.set("nav", window.location.pathname)
+
     const headerColorChange = () => {
         const { color, changeColorOnScroll } = props;
         const windowsScrollTop = window.pageYOffset;
@@ -54,7 +56,7 @@ export default function Header(props) {
                 .classList.remove(classes[changeColorOnScroll.color]);
         }
     };
-    const { color, rightLinks, leftLinks, brand, fixed, absolute } = props;
+    const { color, fixed, absolute } = props;
     const appBarClasses = classNames({
         [classes.appBar]: true,
         [classes[color]]: color,
@@ -62,11 +64,18 @@ export default function Header(props) {
         [classes.fixed]: fixed
     });
     var hbutton = (path, title) => {
+        var stle;
+
+        if (cookies.get("nav") !== path) {
+            stle = scrolled ? classes.linkcolorScrolled : classes.linkcolor
+        } else {
+            stle = scrolled ? classes.selectedLinkcolorScrolled : classes.selectedLinkColor
+        }
         return <Button key={path}>
             <NavLink
                 strict to={path}
-                className={scrolled ? classes.linkcolorScrolled : classes.linkcolor}
-                activeClassName={scrolled ? classes.linkcolorScrolled : classes.linkcolor}
+                className={stle}
+                activeClassName={stle}
             >
                 {title}
             </NavLink>

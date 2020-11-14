@@ -114,6 +114,26 @@ const headerStyle = {
             color: "#FFFFFF"
         }
     },
+    selectedLinkColor: {
+        color: "#F06000",
+        "&:hover": {
+            color: "#FFFFFF",
+            textShadow: "0px 0px 6px rgba(255, 255, 255, 1)",
+        },
+        "&:focus": {
+            color: "#FFFFFF"
+        }
+    },
+    selectedLinkcolorScrolled: {
+        color: "#F06000",
+        "&:hover": {
+            color: "rgba(0, 0, 0, 0.87)",
+            textShadow: "0px 0px 6px rgba(0, 0, 0, 1)",
+        },
+        "&:focus": {
+            color: "rgba(0, 0, 0, 0.87)"
+        }
+    },
     linkcolorScrolled: {
         color: "rgba(0, 0, 0, 0.87)",
         "&:hover": {
