@@ -100,12 +100,16 @@ const profilePageStyle = {
     opensansbold: {
         font: "15px/24px 'opensans-bold', sans-serif"
     },
+    opensanssemibold: {
+        font: "15px/24px 'opensans-semibold', sans-serif"
+    },
     fontItalic: {
         fontStyle: "italic !important"
     },
     fontBold: {
         fontStyle: "bold !important"
     },
+
     fonttype: {
         font: "16px/24px 'Libre Baskerville', serif;"
     },
