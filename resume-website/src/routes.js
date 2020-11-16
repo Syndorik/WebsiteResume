@@ -1,5 +1,6 @@
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import AcademicBackground from "views/AcademicBackground/AcademicBackground.js";
+import Skills from "views/Skills/Skills.js";
 import Home from "views/Home/Home.js";
 
 const routes = [
@@ -26,7 +27,7 @@ const routes = [
     {
         path: "/skills",
         name: "Skills",
-        component: Home,
+        component: Skills,
     },
     {
         path: "/contact",

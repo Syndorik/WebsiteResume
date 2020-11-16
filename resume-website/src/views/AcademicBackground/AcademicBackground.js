@@ -12,6 +12,7 @@ import Grow from '@material-ui/core/Grow';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import IconButton from '@material-ui/core/IconButton';
+import Divider from '@material-ui/core/Divider';
 
 import styles from "assets/jss/material-kit-react/views/academicBackground.js";
 
@@ -170,6 +171,9 @@ export default function ProfilePage(props) {
                         }
 
 
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Divider />
                     </Grid>
 
                     <Grid item xs={12} sm={2} className={classNames(classes.profile, classes.sideTitle, classes.addMarginh1)}>
