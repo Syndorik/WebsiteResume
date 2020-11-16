@@ -27,10 +27,12 @@ export default function ProfilePage(props) {
     const addexp = (where, arr) => {
         return <div>
             <h3 className={classes.fonth3}>{where}</h3>
-            {arr.map(([type, date, description]) => {
-                return <span>
+            {arr.map(([type, date, city, description], index) => {
+                return <span key={index}>
                     <p className={classes.marginP}>
                         <span className={classNames(classes.fonttype, classes.fontItalic)}>{type}</span>
+                        <span className={classes.fonttype}> • </span>
+                        <span className={classes.fontClassic}>{city}</span>
                         <span className={classes.fonttype}> • </span>
                         <span className={classes.fontClassic}>{date}</span></p>
                     <div className={classNames(classes.marginSwap, classes.fontClassic)}>
@@ -98,6 +100,7 @@ export default function ProfilePage(props) {
                                 "Imperial College of London",
                                 [["Thesis completed with Distinctions (first-class honours)",
                                     "03/2020 - 09/2020",
+                                    "London, United Kingdom",
                                     <span>
                                         <span><span className={classes.opensansbold}>Name :</span> Natural Language Processing of the Psychedelic State as Induced by DMT <br /></span>
                                         <span><span className={classes.opensansbold}>Subject:</span> Topic modeling<br /></span>
@@ -118,6 +121,7 @@ export default function ProfilePage(props) {
                                 "Sia Partners",
                                 [["Data scientist Intern consultant",
                                     "03/2019 - 10/2019",
+                                    "Paris, France",
                                     <span>
                                         <span className={classes.opensansbold}>Data scientist for Cleep:<br /></span>
                                         <ul className={classes.ul}>
@@ -145,6 +149,7 @@ export default function ProfilePage(props) {
                                 [[
                                     "Software engineer intern",
                                     "07/2018 - 07/2018",
+                                    "Paris, France",
                                     <span>
                                         Produced a <span className={classes.opensanssemibold}>man-agent Interface </span>
                                         for a target simulator using
@@ -154,6 +159,7 @@ export default function ProfilePage(props) {
                                 [
                                     "Internship Trainee",
                                     "07/2015 - 07/2015",
+                                    "Paris, France",
                                     <span>
                                         Produced a <span className={classes.opensanssemibold}>promotional video </span>
                                         on an optronic mast.
@@ -170,8 +176,138 @@ export default function ProfilePage(props) {
                         <span>Education</span>
                     </Grid>
                     <Grid item xs={12} sm={10}>
-                        <h1 className={classes.fonth1}>About Me</h1>
+                        {
+                            addexp(
+                                "Imperial College of London",
+                                [[
+                                    "Master of Science in Artificial Intelligence/Machine Learning",
+                                    "09/2019 - 09/2020",
+                                    "London, United Kingdom",
+                                    <span>
+                                        <span className={classes.opensanssemibold}>Obtained Distinction (First class
+                                        honors).</span> Relevant courses: <span className={classes.opensanssemibold}>
+                                            Math </span>for Machine Learning, Reinforcement Learning, <span className={classes.opensanssemibold}>
+                                            Computer Vision, Deep Learning</span>, Machine
+                                        Learning for Imaging, <span className={classes.opensanssemibold}>NLP</span>,
+                                        Principle of Distributed Ledgers
+                                        <div>
+                                            {GrowComp(
+                                                "Course details",
+                                                <div>
+                                                    <span className={classes.opensansbold}>Core Courses:</span>
+                                                    <ul className={classes.ul}>
+                                                        <li>Reinforcement Learning: Markov Reward Process, Bellman's equation, Tabular Q learning, Deep Q Learning.</li>
+                                                        <li>Machine Learning Basics: Core ML concepts, Decision Trees, Neural Network concepts, GMMs</li>
+                                                        <li>Computer Vision, features detection (edge/corners), SIFT/SURF descriptor, Region-based and texture-based classification, stereo matching, photometric stereo</li>
+                                                        <li>Math for Machine Learning: Linear Regression, SVM, LDA, KLDA, PCA</li>
+                                                        <li>Machine Learning for Imaging: Convolutional Neural Network, Unet, Fast-RCNN, YOLO</li>
+                                                        <li>NLP: Naive Bayes Classifier, Pared trees (CKY algorithm), Sequence to sequence models (RNN, LSTM), UlmFit, Transformers, BERT</li>
+                                                        <li>Deep Learning, Convolutional Neural Networ, Recurrent Neural Network, Variationnal Auto Encoders, Generative Adversarial Network</li>
+                                                    </ul>
+                                                    <span className={classes.opensansbold}>Minor Courses:</span>
+                                                    <ul className={classes.ul}>
+                                                        <li>Scalable Systems and Data : Study of databases core concepts and scalable computing</li>
+                                                        <li>Principle of Distributed Ledgers : Blockchain concepts</li>
+                                                    </ul>
+                                                </div>
+                                            )}
 
+                                        </div>
+                                    </span>]
+                                ]
+
+                            )
+                        }
+                        {
+                            addexp(
+                                "IMT Atlantique (formerly known as Télécom Bretagne)",
+                                [[
+                                    "Master of Science in Data science (French engineering school)",
+                                    "09/2016 - 09/2019",
+                                    "Brest, France",
+                                    <span>
+                                        Degree completed with highest GPA score possible: 3.99/4. Relevant courses
+                                        include: <span className={classes.opensanssemibold}>Data science</span> :
+                                        <span className={classes.opensanssemibold}>Statistical Machine Learning,
+                                        Data mining,</span> Big Data, Decision-making. Devops,
+                                        Mathematics for Signal Processing, Network
+                                        <div>
+                                            {GrowComp(
+                                                "Course details",
+                                                <div>
+                                                    <span className={classes.opensansbold}>Core courses in the third year:</span>
+                                                    <ul className={classes.ul}>
+                                                        <li>Statistical Machine Learning</li>
+                                                        <li>Inferential Statistics</li>
+                                                        <li>Data mining</li>
+                                                        <li>Big Data</li>
+                                                        <li>Business Intelligence</li>
+                                                        <li>Decision making</li>
+                                                    </ul>
+                                                    <span className={classes.opensansbold}>Core courses in the first and second year :</span>
+                                                    <ul className={classes.ul}>
+                                                        <li>Computer Science,</li>
+                                                        <li>DevOps (Docker/Openstack),⠀</li>
+                                                        <li>Mathematics for signal processing,</li>
+                                                        <li>Network (IT side, and protocols),</li>
+                                                        <li>Practical Works (Signal Processing problem using Matlab, Algorithm problems using Java/python, Electronics and Physics),</li>
+                                                        <li>Electronics and physics,</li>
+                                                        <li>Economics and Human Sciences.</li>
+                                                    </ul>
+                                                </div>
+                                            )}
+
+                                        </div>
+                                    </span>]
+                                ]
+
+                            )
+                        }
+                        {
+                            addexp(
+                                "KAIST",
+                                [[
+                                    "Semester Abroad",
+                                    "02/2018 - 06/2018",
+                                    "Daejeon, South-Korea",
+                                    <span>
+                                        Relevant courses : Mobile Computing, <span className={classes.opensanssemibold}>
+                                            System Programming, Software Engineering</span>
+                                    </span>]
+                                ]
+
+                            )
+                        }
+                        {
+                            addexp(
+                                "Prépa Lycée Blaise Pascal",
+                                [[
+                                    "Preapratory classes for the competitive entrance examination for French Engineering Schools in Maths and Physics",
+                                    "09/2014 - 06/2016",
+                                    "Orsay, France",
+                                    <span>
+                                        Relevant modules: Linear Algebra, Numerical and Functional Sequences,
+                                        Multivariate Calculus, Group Theory, Differential Calculus, Differential Equations
+                                        Electromagnetism, Thermodynamics, Mechanics, Optics, Quantum Physics, Thermostatistics
+                                    </span>]
+                                ]
+
+                            )
+                        }
+                        {
+                            addexp(
+                                "Lycée Institution du Sacré Coeur",
+                                [[
+                                    "Baccalauréat Scientifique",
+                                    "09/2011 - 06/2014",
+                                    "La Ville Du Bois, France",
+                                    <span>
+                                        Highscool completed with hounours
+                                    </span>]
+                                ]
+
+                            )
+                        }
                     </Grid>
 
                 </Grid>
