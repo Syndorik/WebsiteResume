@@ -8,6 +8,11 @@ const profilePageStyle = {
         margin: '0 auto',
         padding: "0px 30px 0px 30px",
     },
+    containbig: {
+        maxWidth: "1420px",
+        margin: '0 auto',
+        padding: "0px 30px 0px 30px",
+    },
     profile: {
         padding: "0px 20px 0px 0px",
         "& img": {
@@ -25,7 +30,7 @@ const profilePageStyle = {
     },
     cardStyle: {
         height: '100%',
-        maxWidth: "450px",
+        maxWidth: "710px",
         borderRadius: "6px",
         boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
         transition: "0.3s",
@@ -37,6 +42,11 @@ const profilePageStyle = {
             textDecoration: "none",
             backgroundColor: "rgba(0, 0, 0, 0.04)"
         }
+    },
+    verticalTimeline: {
+        "&:before": {
+            background: "#838c8b"
+        },
     },
     colorSkilled: {
         color: "#F06000",
@@ -125,6 +135,15 @@ const profilePageStyle = {
         font: "25px/30px 'opensans-bold', sans-serif",
         color: "#313131",
     },
+    date: {
+        color: "#313131",
+    },
+    timelineh3: {
+        font: "1.5625rem 'opensans-bold', sans-serif",
+    },
+    timelineh4: {
+        font: "1.125rem 'opensans-regular', sans-serif",
+    },
     opensansbold: {
         font: "15px/24px 'opensans-bold', sans-serif"
     },
@@ -156,6 +175,14 @@ const profilePageStyle = {
         textAlign: "justify",
 
     },
+    iconChange: {
+        "& svg": {
+            width: "34px",
+            height: "34px",
+            marginLeft: "-17px",
+            marginTop: "-17px"
+        }
+    },
     marginP: {
         margin: "9px 0px 18px 0px",
     },
@@ -164,7 +191,7 @@ const profilePageStyle = {
         textAlign: "justify"
     },
     ul: {
-        margin: "0px 0px 0px 0px"
+        margin: "0px 0px 1px 0px"
     },
     iconbutton: {
         "&:hover": {
@@ -182,7 +209,16 @@ const profilePageStyle = {
     },
     colorEmph: {
         color: "#ffffff"
-    }
+    },
+    linkcolorScrolled: {
+        color: "rgba(0, 0, 0, 0.54)",
+        "&:hover": {
+            color: "rgba(0, 0, 0, 0.54)",
+        },
+        "&:focus": {
+            color: "rgba(0, 0, 0, 0.54)"
+        }
+    },
 };
 
 export default profilePageStyle;
