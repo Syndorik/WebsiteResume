@@ -8,11 +8,6 @@ const profilePageStyle = {
         margin: '0 auto',
         padding: "0px 30px 0px 30px",
     },
-    containbig: {
-        maxWidth: "1420px",
-        margin: '0 auto',
-        padding: "0px 30px 0px 30px",
-    },
     profile: {
         padding: "0px 20px 0px 0px",
         "& img": {
@@ -30,7 +25,7 @@ const profilePageStyle = {
     },
     cardStyle: {
         height: '100%',
-        maxWidth: "710px",
+        maxWidth: "450px",
         borderRadius: "6px",
         boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
         transition: "0.3s",
@@ -42,11 +37,6 @@ const profilePageStyle = {
             textDecoration: "none",
             backgroundColor: "rgba(0, 0, 0, 0.04)"
         }
-    },
-    verticalTimeline: {
-        "&:before": {
-            background: "#838c8b"
-        },
     },
     colorSkilled: {
         color: "#F06000",
@@ -83,11 +73,8 @@ const profilePageStyle = {
         boxShadow:
             "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
     },
-    icon: {
-        transform: "scale(1.8)"
-    },
     sideTitle: {
-        font: "1.7em opensans-bold, sans-serif",
+        font: "2em opensans-bold, sans-serif",
         textTransform: "uppercase",
         color: "#313131",
         letterSpacing: "1px",
@@ -97,12 +84,21 @@ const profilePageStyle = {
         }
 
     },
-    smallTitle: {
-        margin: "0px 0px 10px 0px",
-        font: "24px/24px opensans-bold, sans-serif",
+    sideTitleSmall: {
+        font: "1em opensans-bold, sans-serif",
         textTransform: "uppercase",
         color: "#313131",
         letterSpacing: "1px",
+        "& span": {
+            borderBottom: "3px solid #11ABB0",
+            paddingBottom: "6px"
+        }
+
+    },
+    buttonStyle: {
+        backgroundColor: "#11ABB0",
+        color: "#fff",
+        font: "15px/24px 'opensans-bold', sans-serif"
     },
     title: {
         ...title,
@@ -135,24 +131,11 @@ const profilePageStyle = {
         font: "25px/30px 'opensans-bold', sans-serif",
         color: "#313131",
     },
-    date: {
-        color: "#313131",
-    },
-    timelineh3: {
-        font: "1.5625rem 'opensans-bold', sans-serif",
-    },
-    timelineh4: {
-        font: "1.125rem 'opensans-regular', sans-serif",
-    },
     opensansbold: {
         font: "15px/24px 'opensans-bold', sans-serif"
     },
     opensanssemibold: {
         font: "15px/24px 'opensans-semibold', sans-serif"
-    },
-    opensanssemiboldparagraph: {
-        font: "18px/24px 'opensans-semibold', sans-serif",
-
     },
     fontItalic: {
         fontStyle: "italic !important"
@@ -166,23 +149,12 @@ const profilePageStyle = {
     },
     fontClassic: {
         font: "15px/24px 'opensans-regular', sans-serif",
-        "& p": {
-            textAlign: "justify",
-        }
-    },
-    fontClassicParagraph: {
-        font: "18px/24px 'opensans-regular', sans-serif",
-        textAlign: "justify",
+        textAlign: "justify"
 
     },
-    reactlogo: { "& ellipse": { "stroke": "#fff" }, "& circle": { "stroke": "#fff" } },
-    iconChange: {
-        "& svg": {
-            width: "34px",
-            height: "34px",
-            marginLeft: "-17px",
-            marginTop: "-17px"
-        }
+    fontClassicParagraph: {
+        font: "23px/24px 'opensans-regular', sans-serif",
+        textAlign: "justify"
     },
     marginP: {
         margin: "9px 0px 18px 0px",
@@ -192,7 +164,7 @@ const profilePageStyle = {
         textAlign: "justify"
     },
     ul: {
-        margin: "0px 0px 1px 0px"
+        margin: "0px 0px 0px 0px"
     },
     iconbutton: {
         "&:hover": {
@@ -210,16 +182,7 @@ const profilePageStyle = {
     },
     colorEmph: {
         color: "#ffffff"
-    },
-    linkcolorScrolled: {
-        color: "rgba(0, 0, 0, 0.54)",
-        "&:hover": {
-            color: "rgba(0, 0, 0, 0.54)",
-        },
-        "&:focus": {
-            color: "rgba(0, 0, 0, 0.54)"
-        }
-    },
+    }
 };
 
 export default profilePageStyle;

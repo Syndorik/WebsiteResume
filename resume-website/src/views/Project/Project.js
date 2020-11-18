@@ -12,7 +12,6 @@ import ReactCardFlip from 'react-card-flip';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import CardMedia from '@material-ui/core/CardMedia';
 
 import ReactPlayer from 'react-player'
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
@@ -30,21 +29,20 @@ import GetAppRoundedIcon from '@material-ui/icons/GetAppRounded';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import NotInterestedIcon from '@material-ui/icons/NotInterested';
-
-
 import WorkIcon from '@material-ui/icons/Work';
 import SchoolIcon from '@material-ui/icons/School';
 import StarIcon from '@material-ui/icons/Star';
 
+import TorchIcon from "views/Components/Icons/TorchIcon.js"
+import CIcon from "views/Components/Icons/CIcon.js"
+import ArduinoIcon from "views/Components/Icons/ArduinoIcon.js"
+import AndroidIcon from "views/Components/Icons/AndroidIcon.js"
+import DockerIcon from "views/Components/Icons/DockerIcon.js"
+import PythonIcon from "views/Components/Icons/PythonIcon.js"
+import ReactIcon from "views/Components/Icons/ReactIcon.js"
+
 import styles from "assets/jss/material-kit-react/views/project.js";
 import video from "assets/videos/fight.mp4"
-
-import { SvgIcon } from "@material-ui/core";
-
-import { ReactComponent as TorchLogo } from "assets/icons/pytorch.svg"
-import { ReactComponent as ReactLogo } from "assets/icons/react.svg"
-
-
 
 const useStyles = makeStyles(styles);
 
@@ -52,18 +50,6 @@ const useStyles = makeStyles(styles);
 export default function ProfilePage(props) {
     const classes = useStyles();
     const { ...rest } = props;
-
-    const TorchIcon = () => {
-        return <SvgIcon>
-            <TorchLogo height="24px" width="24px" />
-        </SvgIcon>
-    }
-
-    const ReactIcon = () => {
-        return <SvgIcon height="60px" width="60px" viewBox='0 0 60 60' >
-            <ReactLogo height="60px" width="60px" />
-        </SvgIcon>
-    }
 
     const LinkProject = (urlProject) => {
         return <IconButton>
@@ -512,7 +498,7 @@ export default function ProfilePage(props) {
                                 "Reinforcement Learning",
                                 "Imperial College of London",
                                 " November 2019 -  December 2019",
-                                <WorkIcon />,
+                                <TorchIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -546,14 +532,15 @@ export default function ProfilePage(props) {
                                         {LinkReport("report_rl_deepQ_part_2.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/reinforcement_learning/maze_traversal")}
                                     </Grid>
-                                </Grid>
+                                </Grid>,
+                                true
 
                             )}
                             {Project(
                                 "Machine Learning Basics",
                                 "Imperial College of London",
                                 " November 2019 -  December 2019",
-                                <WorkIcon />,
+                                <PythonIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -587,14 +574,15 @@ export default function ProfilePage(props) {
                                         {LinkReport("report_nn.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/machine_learning_basics/neural_network")}
                                     </Grid>
-                                </Grid>
+                                </Grid>,
+                                true
 
                             )}
                             {Project(
                                 "Math for Machine Learning",
                                 "Imperial College of London",
                                 "October 2019 - December 2019",
-                                <WorkIcon />,
+                                <PythonIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -623,14 +611,15 @@ export default function ProfilePage(props) {
                                     <Grid item xs={4} style={{ textAlign: "right" }}>
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/maths_for_ml")}
                                     </Grid>
-                                </Grid>
+                                </Grid>,
+                                true
 
                             )}
                             {Project(
                                 "Reinforcement Learning",
                                 "Imperial College of London",
                                 "October 2019 - November 2019",
-                                <WorkIcon />,
+                                <PythonIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -654,7 +643,8 @@ export default function ProfilePage(props) {
                                         {LinkReport("report_rl_grid_world.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/reinforcement_learning/gridworld")}
                                     </Grid>
-                                </Grid>
+                                </Grid>,
+                                true
 
                             )}
 
@@ -662,7 +652,7 @@ export default function ProfilePage(props) {
                                 "Machine Learning Basics",
                                 "Imperial College of London",
                                 "October 2019 - November 2019",
-                                <WorkIcon />,
+                                <PythonIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -698,7 +688,8 @@ export default function ProfilePage(props) {
                                         {LinkReport("report_decision_tree.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/machine_learning_basics/decision_tree")}
                                     </Grid>
-                                </Grid>
+                                </Grid>,
+                                true
 
                             )}
 
@@ -757,7 +748,7 @@ export default function ProfilePage(props) {
                                 "Challenge: prediction of sales in a service station",
                                 "Télécom Bretagne",
                                 "October 2018 - March 2019 ",
-                                <WorkIcon />,
+                                <PythonIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -765,7 +756,8 @@ export default function ProfilePage(props) {
                                         </p>
 
                                     </Grid>
-                                </Grid>
+                                </Grid>,
+                                true
 
                             )}
 
@@ -773,7 +765,7 @@ export default function ProfilePage(props) {
                                 "Data Engineering",
                                 "Télécom Bretagne",
                                 "October 2018 - December 2018",
-                                <WorkIcon />,
+                                <DockerIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -795,7 +787,8 @@ export default function ProfilePage(props) {
                                     <Grid item xs={4} style={{ textAlign: "right" }}>
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/devops")}
                                     </Grid>
-                                </Grid>
+                                </Grid>,
+                                true
 
                             )}
 
@@ -803,7 +796,7 @@ export default function ProfilePage(props) {
                                 "Data mining: Kaggle project ",
                                 "Télécom Bretagne",
                                 "October 2018 - November 2018",
-                                <WorkIcon />,
+                                <PythonIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -832,7 +825,8 @@ export default function ProfilePage(props) {
                                         {LinkReport("report_datamining.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/datamining_PUBG")}
                                     </Grid>
-                                </Grid>
+                                </Grid>,
+                                true
 
                             )}
 
@@ -840,7 +834,7 @@ export default function ProfilePage(props) {
                                 "Statistics",
                                 "Télécom Bretagne",
                                 "October 2018 - November 2018 ",
-                                <WorkIcon />,
+                                <PythonIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -863,14 +857,15 @@ export default function ProfilePage(props) {
                                         {LinkReport("report_film_culture.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/statistics")}
                                     </Grid>
-                                </Grid>
+                                </Grid>,
+                                true
 
                             )}
                             {StartWork(
                                 "Graduate Student at Télécom Bretagne",
                                 "Brest, France",
                                 "September 2018 - June 2019",
-                                <WorkIcon />,
+                                <SchoolIcon />,
                                 <p>
                                     Started my Master of Science in Data Science
                                 </p>
@@ -880,7 +875,7 @@ export default function ProfilePage(props) {
                                 "Mobile Computing and Application",
                                 "KAIST",
                                 "March 2018 - June 2018  ",
-                                <WorkIcon />,
+                                <AndroidIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -911,7 +906,7 @@ export default function ProfilePage(props) {
                                 "Software Engineering",
                                 "KAIST",
                                 "March 2018 - June 2018",
-                                <WorkIcon />,
+                                <AndroidIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -942,7 +937,7 @@ export default function ProfilePage(props) {
                                 "System Programming",
                                 "KAIST",
                                 "March 2018 - June 2018",
-                                <WorkIcon />,
+                                <CIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -973,7 +968,8 @@ export default function ProfilePage(props) {
                                     <Grid item xs={4} style={{ textAlign: "right" }}>
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/KAIST/system_programing_labs")}
                                     </Grid>
-                                </Grid>
+                                </Grid>,
+                                true
 
                             )}
 
@@ -981,7 +977,7 @@ export default function ProfilePage(props) {
                                 "Mobile computing and Application",
                                 "KAISTs",
                                 "May 2018",
-                                <WorkIcon />,
+                                <ArduinoIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -1013,7 +1009,7 @@ export default function ProfilePage(props) {
                                 "Mobile computing and Application",
                                 "KAIST",
                                 "April 2018",
-                                <WorkIcon />,
+                                <ArduinoIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -1044,7 +1040,7 @@ export default function ProfilePage(props) {
                                 "Mobile computing and Application",
                                 "KAIST",
                                 "April 2018",
-                                <WorkIcon />,
+                                <AndroidIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -1075,7 +1071,7 @@ export default function ProfilePage(props) {
                                 "Semester abroad at KAIST",
                                 "Daejon, South-Korea",
                                 "February 2018 - June 2018",
-                                <WorkIcon />,
+                                <SchoolIcon />,
                                 <p>
                                     Started working at Sia Partners as a data scientist intern
                                 </p>
@@ -1085,7 +1081,7 @@ export default function ProfilePage(props) {
                                 "Network Application",
                                 "Télécom Bretagne",
                                 "April 2017 - June 2017",
-                                <WorkIcon />,
+                                <PythonIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -1107,7 +1103,8 @@ export default function ProfilePage(props) {
                                     <Grid item xs={4} style={{ textAlign: "right" }}>
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/network_application")}
                                     </Grid>
-                                </Grid>
+                                </Grid>,
+                                true
 
                             )}
 
@@ -1115,11 +1112,11 @@ export default function ProfilePage(props) {
                                 "Pixar lamp",
                                 "Télécom Bretagne",
                                 "January 2017 - June 2017",
-                                <WorkIcon />,
+                                <ArduinoIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
-                                            Implementation of the communication protocol for a Pixar-type lamp
+                                            Implementation of the communication protocol for a Pixar-type lamp on an Arduino board
                                         </p>
                                         {GrowComp("",
                                             <div>
@@ -1145,7 +1142,7 @@ export default function ProfilePage(props) {
                                 "Projet Découverte",
                                 "Télécom Bretagne",
                                 "September 2016 - December 2016 ",
-                                <WorkIcon />,
+                                <ArduinoIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -1172,7 +1169,7 @@ export default function ProfilePage(props) {
                                 "Graph Traversal",
                                 "Télécom Bretagne",
                                 "September 2016 - November 2016",
-                                <WorkIcon />,
+                                <PythonIcon />,
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
@@ -1194,14 +1191,15 @@ export default function ProfilePage(props) {
                                     <Grid item xs={4} style={{ textAlign: "right" }}>
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/pyrat_french_only")}
                                     </Grid>
-                                </Grid>
+                                </Grid>,
+                                true
 
                             )}
                             {StartWork(
                                 "Télécom Bretagne",
                                 "Brest, France",
                                 "September 2016 - November 2016",
-                                <WorkIcon />,
+                                <SchoolIcon />,
                                 <p>
                                     Started Télécom Bretagne french engineering school
                                 </p>
@@ -1211,7 +1209,7 @@ export default function ProfilePage(props) {
                                 "Prépa Lycée Blaise Pascal",
                                 "Orsay, France",
                                 "September 2014 - June 2016",
-                                <WorkIcon />,
+                                <SchoolIcon />,
                                 <p>
                                     Started the preparatory classes for the competitive entrance for french engineering schools in Maths and Physics
                                 </p>
@@ -1221,14 +1219,14 @@ export default function ProfilePage(props) {
                                 "Lycée Institution du Sacré Coeur",
                                 "La ville du vois, France",
                                 "September 2011 - June 2014",
-                                <WorkIcon />,
+                                <SchoolIcon />,
                                 <p>
                                     Started Highschool
                                 </p>
                             )}
 
                             <VerticalTimelineElement
-                                iconStyle={{ background: '#77dd77', color: '#fff' }}
+                                iconStyle={{ background: '#77dd77', color: '#fff', boxShadow: "0 0 0 4px rgb(117 187 117)" }}
                                 icon={<StarIcon />}
                             />
                         </VerticalTimeline>
