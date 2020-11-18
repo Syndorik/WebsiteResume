@@ -1,29 +1,32 @@
 version: '3'
 services:
   frontend:
+    container_name: frontend
     restart: always
-    build: ./frontend
-    command: sh /opt/app/conf/bootstrap_frontend.sh
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - ./frontend/src/static:/opt/app/app/static/custom
-      - ./frontend/src/conf:/opt/app/custom/conf
-      - ./frontend/src/views:/opt/app/custom/views
-      - ./frontend/src/templates:/opt/app/custom/templates
-      - ./conf:/opt/app/conf
-      - ./frontend/src/homepage:/opt/app/app/templates/pages/homepage
+      - '.:/app'
+      - '/app/node_module'
+    ports:
+      - 3000:3000
     networks:
       - frontend_network
+
   nginx:
     image: nginx:latest
-    command: bash /opt/app/conf/bootstrap_nginx.sh
+    container_name: nginx
+    # command: bash /opt/app/conf/bootstrap_nginx.sh
     volumes:
       - ./conf:/opt/app/conf
     ports:
-      - 80:80
+      - 80:3000
     networks:
       - frontend_network
     depends_on:
       - frontend
+
 networks:
   frontend_network:
     driver: bridge
