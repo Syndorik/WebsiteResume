@@ -21,12 +21,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
-        env:
-          PROJECT_PATH: "./WebsiteResume"
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_IMAGES_PAT }}
           registry: docker.pkg.github.com
-          image-name: frontend 
+          build_args: PROJECT_PATH="./WebsiteResume"
           dockerfile: ./resumeFrontend/Dockerfile
           tag_with_ref: true
