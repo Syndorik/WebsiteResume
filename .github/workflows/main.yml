@@ -27,5 +27,6 @@ jobs:
           registry: docker.pkg.github.com
           build_args: PROJECT_PATH=./resumeFrontend
           dockerfile: ./resumeFrontend/Dockerfile
+          repository: syndorik/websiteresume/frontend
           tag_with_ref: true
-          name: syndorik/websiteresume/frontend
+          
