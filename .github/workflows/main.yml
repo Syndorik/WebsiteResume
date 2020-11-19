@@ -1,9 +1,10 @@
-name: Publish Docker image
+name: Build and Publish Docker image
 on:
-  release:
-    types: [published]
+  push:
+    branches: master
+
 jobs:
-  push_to_registry:
+  build_and_push_to_registry:
     name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
     steps:
@@ -16,4 +17,6 @@ jobs:
           password: ${{ secrets.DOCKER_IMAGES_PAT }}
           registry: docker.pkg.github.com
           repository: Syndorik/WebsiteResume/frontend
+          image-name: frontend 
+          dockerfile: ./resumeFrontend/Dockerfile
           tag_with_ref: true
