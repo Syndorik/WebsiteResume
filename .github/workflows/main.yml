@@ -25,7 +25,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_IMAGES_PAT }}
           registry: docker.pkg.github.com
-          repository: Syndorik/WebsiteResume/frontend
           image-name: frontend 
           dockerfile: ./resumeFrontend/Dockerfile
           tag_with_ref: true
