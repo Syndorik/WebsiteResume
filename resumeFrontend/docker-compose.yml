@@ -5,6 +5,8 @@ services:
     restart: always
     build:
       context: .
+      args:
+        PROJECT_PATH: "."
       dockerfile: Dockerfile
     volumes:
       - '.:/app'

@@ -6,7 +6,10 @@ WORKDIR /app
 
 # add `/app/node_modules/.bin` to $PATH
 # install app dependencies
-COPY package.json package-lock.json ./
+ARG PROJECT_PATH
+
+RUN echo $PROJECT_PATH
+COPY $PROJECT_PATH/package.json $PROJECT_PATH/package-lock.json ./
 
 RUN CI=true 
 
