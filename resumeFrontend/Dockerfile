@@ -5,16 +5,20 @@ FROM node:latest
 WORKDIR /app
 
 # add `/app/node_modules/.bin` to $PATH
+# install app dependencies
+COPY package.json package-lock.json ./
+
+RUN CI=true 
+
+
+RUN npm install
+RUN npm rebuild node-sass
 ENV PATH /app/node_modules/.bin:$PATH
 
-# install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install --silent
 
 # add app
 COPY . ./
 
 # start app
-CMD ["npm", "start"]
+CMD ["npm","start"]
 # CMD ["sleep","3600"]

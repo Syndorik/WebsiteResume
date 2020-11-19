@@ -8,20 +8,21 @@ services:
       dockerfile: Dockerfile
     volumes:
       - '.:/app'
-      - '/app/node_module'
-    ports:
-      - 3000:3000
+      - '/app/node_modules'
+    expose:
+      - "3000"
     networks:
       - frontend_network
 
   nginx:
     image: nginx:latest
+    restart: always
     container_name: nginx
-    # command: bash /opt/app/conf/bootstrap_nginx.sh
+    command: bash /opt/app/conf/bootstrap_nginx.sh
     volumes:
       - ./conf:/opt/app/conf
     ports:
-      - 80:3000
+      - 80:80
     networks:
       - frontend_network
     depends_on:
