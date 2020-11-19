@@ -20,7 +20,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 
 # add app
-COPY . ./
+COPY $PROJECT_PATH/. ./
 
 # start app
 CMD ["npm","start"]

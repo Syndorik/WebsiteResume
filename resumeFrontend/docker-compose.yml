@@ -7,7 +7,7 @@ services:
       context: .
       args:
         PROJECT_PATH: "."
-      dockerfile: Dockerfile
+      dockerfile: ./Dockerfile
     volumes:
       - '.:/app'
       - '/app/node_modules'
