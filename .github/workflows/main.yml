@@ -28,4 +28,4 @@ jobs:
           build_args: PROJECT_PATH=./resumeFrontend
           dockerfile: ./resumeFrontend/Dockerfile
           tag_with_ref: true
-          tags: frontend
+          name: syndorik/websiteresume/frontend
