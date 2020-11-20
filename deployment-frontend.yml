@@ -21,11 +21,12 @@ spec:
       - name: frontend
         image: docker.pkg.github.com/syndorik/websiteresume/frontend:main
         imagePullPolicy: Always
+        env:
+          - name: REDEPLOY
+            value: ${GITHUB_RUN_ID}
         ports:
         - containerPort: 3000
-      env:
-        - name: REDEPLOY
-          value: ${GITHUB_RUN_ID}
+      
       imagePullSecrets:
         - name: regcred
 ---
