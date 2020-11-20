@@ -36,6 +36,7 @@ export default function ProfilePage(props) {
 
     const [name, setName] = React.useState("")
     const [isName, setisName] = React.useState(false)
+    const [disable, setDisable] = React.useState(false)
 
     const [email, setEmail] = React.useState("")
     const [isEmail, setisEmail] = React.useState(false)
@@ -48,10 +49,15 @@ export default function ProfilePage(props) {
 
     const [open, setOpen] = React.useState(false);
     const [openError, setOpenError] = React.useState(false);
+    const [openBeingSent, setOpenBeingSent] = React.useState(false);
     const [openNotworking, setOpenNotworking] = React.useState(false);
 
     const handleAlert = () => {
         setOpen(true);
+    };
+
+    const handleAlertBeingSent = () => {
+        setOpenBeingSent(true);
     };
 
     const handleAlertError = () => {
@@ -63,6 +69,7 @@ export default function ProfilePage(props) {
     };
 
     const handleClose = (event, reason) => {
+        handleCloseBeingSent("", "")
         if (reason === 'clickaway') {
             return;
         }
@@ -70,7 +77,16 @@ export default function ProfilePage(props) {
         setOpen(false);
     };
 
+    const handleCloseBeingSent = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenBeingSent(false);
+    };
+
     const handleCloseError = (event, reason) => {
+        handleCloseBeingSent("", "")
         if (reason === 'clickaway') {
             return;
         }
@@ -98,13 +114,18 @@ export default function ProfilePage(props) {
 
 
     function sendEmail(templateParams) {
+        setDisable(true)
+        console.log(disable)
+        handleAlertBeingSent()
         emailjs.send('service_haq0uso', 'template_hi75s6c', templateParams)
             .then((result) => {
                 console.log(result.text);
                 handleAlert()
+                setDisable(false)
             }, (error) => {
                 console.log(error.text);
                 handleNotWorking()
+                setDisable(false)
             });
     }
 
@@ -231,14 +252,13 @@ export default function ProfilePage(props) {
 
                         </div>
                         <div style={{ textAlign: "end" }}>
-                            <Button variant="contained" className={classes.buttonStyle} onClick={handleClick}>Send</Button>
+                            <Button variant="contained" className={classes.buttonStyle} disabled={disable} onClick={handleClick}>Send</Button>
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={4}>
                         <h1 className={classNames(classes.profile, classes.sideTitleSmall, classes.margin)}><span>My details</span></h1>
                         <p className={classes.fontClassic}>Alexandre Allani</p>
-                        <p className={classes.fontClassic}>22 TER Chemin des sablons</p>
-                        <p className={classes.fontClassic}>La ville du bois, France</p>
+                        <p className={classes.fontClassic}>Paris, France</p>
                         <p className={classes.fontClassic}>+33648080121</p>
                         <p className={classes.fontClassic}>aa4719@ic.ac.uk</p>
 
@@ -248,6 +268,11 @@ export default function ProfilePage(props) {
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success">
                     Email sent
+                </Alert>
+            </Snackbar>
+            <Snackbar open={openBeingSent} autoHideDuration={6000} onClose={handleCloseBeingSent}>
+                <Alert onClose={handleCloseBeingSent} severity="info">
+                    Sending email ...
                 </Alert>
             </Snackbar>
             <Snackbar open={openError} autoHideDuration={6000} onClose={handleCloseError}>
