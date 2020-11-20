@@ -15,7 +15,7 @@ on:
 
 
 jobs:
-  build_and_push_to_registry_deploy:
+  build_and_push_to_registry_and_deploy:
     name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
     steps:
@@ -39,6 +39,15 @@ jobs:
           CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
           ZONE_NAME: europe-west1-b
         with:
-          args: apply -f deployment-frontend.yaml
+          args: apply -f ./deployment-frontend.yml
+      - name: Deploy ingress
+        uses: ameydev/gke-kubectl-action@master
+        env:
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
+          ZONE_NAME: europe-west1-b
+          with:
+            args: apply -f ./deployment-ingress.yml
 
   
