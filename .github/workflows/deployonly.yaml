@@ -16,8 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: envsubst < deployment-frontend.yml > deployment-frontend.yml
+      - run: envsubst < deployment-frontend.yml > deployment-frontend-feed.yml
+        env:
+          GITHUB_RUN_ID: ${{ GITHUB_RUN_ID }}
       - run: cat deployment-frontend.yml
+      - run: cat deployment-frontend-feed.yml
       - name: Deploy frontend
         uses: ameydev/gke-kubectl-action@master
         env:
