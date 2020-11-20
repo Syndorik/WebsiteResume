@@ -28,7 +28,7 @@ jobs:
           CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
           ZONE_NAME: europe-west1-b
         with:
-          args: apply -f ./deployment-frontend.yml
+          args: apply -f ./deployment-frontend-feed.yml
       - name: Deploy ingress
         uses: ameydev/gke-kubectl-action@master
         env:
