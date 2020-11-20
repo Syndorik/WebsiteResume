@@ -1217,7 +1217,7 @@ export default function ProfilePage(props) {
 
                             {StartWork(
                                 "Lycée Institution du Sacré Coeur",
-                                "La ville du vois, France",
+                                "La ville du bois, France",
                                 "September 2011 - June 2014",
                                 <SchoolIcon />,
                                 <p>

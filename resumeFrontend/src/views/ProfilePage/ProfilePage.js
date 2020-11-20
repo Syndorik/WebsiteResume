@@ -74,9 +74,9 @@ export default function ProfilePage(props) {
                         <p className={classes.font}>
                             I am a datascientist with two masters in AI/Machine learning: one in IMT Atlantique
                             (formerly Télécom Bretagne) and one in Imperial College of London both completed with the
-                            highest honours. I sepcialised in NLP with my master thesis in topic modeling: I was working
+                            highest honours. I specialised in NLP with my master thesis in topic modeling: I was working
                             with the Centre of Psychedelic Reserach of Imperial and developped a new model based on
-                            BERT with state of the art results. I like to discorver new methods and apply them in
+                            BERT with state of the art results. I like to discover new methods and apply them in
                             personal projects.
                         </p>
                     </Grid>
