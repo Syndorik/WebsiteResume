@@ -1,0 +1,12 @@
+Install helm and use it for nginx on GKE FROM CLOUD SHELL
+https://cloud.google.com/community/tutorials/nginx-ingress-gke
+
+curl -o get_helm.sh https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get
+chmod +x get_helm.sh
+./get_helm.sh
+
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+helm init --service-account tiller
+
+helm install --name nginx-ingress stable/nginx-ingress --set rbac.create=true --set controller.publishService.enabled=true

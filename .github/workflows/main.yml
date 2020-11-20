@@ -17,7 +17,7 @@ on:
 
 
 jobs:
-  build_and_push_to_registry:
+  build_and_push_to_registry_deploy:
     name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
     steps:
@@ -33,6 +33,34 @@ jobs:
           dockerfile: ./resumeFrontend/Dockerfile
           repository: syndorik/websiteresume/frontend
           tag_with_ref: true
+      - name: Deploy frontend
+        uses: ameydev/gke-kubectl-action@master
+        env:
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
+          ZONE_NAME: europe-west1-b
+        with:
+          args: apply -f deployment-frontend.yaml
+
+---
+name: Build and Publish Docker image
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'  
+
+
+jobs:
+  deploy:
+    name: Deploy to gcp
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy frontend
         uses: ameydev/gke-kubectl-action@master
         env:
