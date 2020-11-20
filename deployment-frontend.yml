@@ -23,7 +23,7 @@ spec:
         imagePullPolicy: Always
         env:
           - name: REDEPLOY
-            value: ${GITHUB_RUN_ID}
+            value: ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
         ports:
         - containerPort: 3000
       
