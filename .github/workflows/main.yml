@@ -2,7 +2,10 @@ name: Build and Publish Docker image
 on:
   push:
     branches: main
-    paths-ignore: .github/**
+    paths-ignore: 
+      .github/**
+      deployment-*
+    
   workflow_dispatch:
     inputs:
       logLevel:
@@ -30,4 +33,14 @@ jobs:
           dockerfile: ./resumeFrontend/Dockerfile
           repository: syndorik/websiteresume/frontend
           tag_with_ref: true
-          
+      - name: Deploy frontend
+        uses: ameydev/gke-kubectl-action@master
+        env:
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
+          ZONE_NAME: europe-west1-b
+        with:
+          args: apply -f deployment-frontend.yaml
+      
+  
