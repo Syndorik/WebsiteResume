@@ -23,5 +23,5 @@ jobs:
           CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
           ZONE_NAME: europe-west1-b
         with:
-          args: apply -f deployment-frontend.yaml
+          args: apply -f deployment-frontend.yml
       
