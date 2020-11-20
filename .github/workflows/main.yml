@@ -2,9 +2,7 @@ name: Build and Publish Docker image
 on:
   push:
     branches: main
-    paths-ignore: 
-      .github/**
-      deployment-*
+    paths-ignore: .github/**
     
   workflow_dispatch:
     inputs:
