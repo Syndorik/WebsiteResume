@@ -25,4 +25,13 @@ jobs:
           ZONE_NAME: europe-west1-b
         with:
           args: apply -f ./deployment-frontend.yml
+      - name: Deploy frontend
+        uses: ameydev/gke-kubectl-action@master
+        env:
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
+          ZONE_NAME: europe-west1-b
+          with:
+            args: apply -f ./deployment-ingress.yml
       
