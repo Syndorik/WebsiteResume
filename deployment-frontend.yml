@@ -23,7 +23,7 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
-      - env:
+      env:
         - name: REDEPLOY
           value: ${GITHUB_RUN_ID}
       imagePullSecrets:
