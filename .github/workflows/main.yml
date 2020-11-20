@@ -44,7 +44,7 @@ jobs:
           args: apply -f deployment-frontend.yaml
 
 ---
-name: Build and Publish Docker image
+name: Deploy
 on:
   workflow_dispatch:
     inputs:
