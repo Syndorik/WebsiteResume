@@ -15,6 +15,7 @@ jobs:
     name: Deploy to gcp
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - name: Deploy frontend
         uses: ameydev/gke-kubectl-action@master
         env:
