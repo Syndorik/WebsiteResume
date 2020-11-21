@@ -22,10 +22,6 @@ export default function ProfilePage(props) {
                 color="transparent"
                 brand="Material Kit React"
                 fixed
-                changeColorOnScroll={{
-                    height: 200,
-                    color: "white"
-                }}
                 {...rest}
             />
             <Parallax filterlight big image={require("assets/img/profile-bg.jpg")} >

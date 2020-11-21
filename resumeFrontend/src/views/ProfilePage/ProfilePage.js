@@ -19,6 +19,7 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import profile from "assets/img/faces/alex.png";
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
 import { Link } from "react-router-dom"
+import settings from 'conf/config.js'
 
 
 const useStyles = makeStyles(styles);
@@ -64,7 +65,7 @@ export default function ProfilePage(props) {
                 <Grid container alignItems="center" justify="center" className={classes.contain}>
                     <Grid item xs={12} sm={4} className={classes.profile}>
                         <div >
-                            <div>
+                            <div style={window.innerWidth >= settings.mobile ? undefined : { textAlign: "center", marginBottom: "20px" }}>
                                 <img src={profile} alt="..." className={imageClasses} />
                             </div>
                         </div>
@@ -84,22 +85,29 @@ export default function ProfilePage(props) {
                     <Grid item xs={12} sm={4} className={classes.profile} />
                     <Grid item xs={12} sm={8}>
                         <Grid container className={classes.addMargin}>
-                            <Grid item xs={6}>
+                            <Grid item xs={window.innerWidth >= settings.mobile ? 6 : 12}>
                                 <h1 className={classes.fonth1}>Contact Details</h1>
                             </Grid>
-                            <Grid item xs={6} align="right" className={classes.margin}>
+                            {window.innerWidth >= settings.mobile ? <Grid item xs={6} align="right" className={classes.margin}>
                                 <Link to="/files/resume.pdf" target="_blank" download>
                                     <Button size="large" variant="contained" startIcon={<GetAppIcon />} className={classes.downloadButton}>
                                         Download Resume
                                     </Button>
                                 </Link>
-                            </Grid>
+                            </Grid> : ""}
                         </Grid>
 
                         {alignedIcons(<PermIdentityIcon />, "Alexandre Allani")}
                         {alignedIcons(<HomeIcon />, "Paris, France")}
                         {alignedIcons(<PhoneIcon />, "+33648080121")}
                         {alignedIcons(<EmailIcon />, "alexandre.allani19@imperial.ac.uk")}
+                        {window.innerWidth <= settings.mobile ? <Grid item xs={12} align="right" className={classes.margin}>
+                            <Link to="/files/resume.pdf" target="_blank" download>
+                                <Button size="large" variant="contained" startIcon={<GetAppIcon />} className={classes.downloadButton} style={{ marginTop: "10px" }}>
+                                    Download Resume
+                                    </Button>
+                            </Link>
+                        </Grid> : ""}
 
                     </Grid>
 

@@ -29,7 +29,7 @@ const profilePageStyle = {
     downloadButton: {
         color: "#ffffff",
         backgroundColor: "#313131",
-        whiteSpace: "nowrap"
+        whiteSpace: "nowrap",
 
     },
     description: {
