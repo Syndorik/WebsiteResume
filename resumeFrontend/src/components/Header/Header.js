@@ -9,11 +9,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from '@material-ui/core/Button';
-import routes from "routes.js"
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
+import routes from "routes.js"
 // core components
 import styles from "assets/jss/material-kit-react/components/headerStyle.js";
 import Cookies from 'universal-cookie';
+import settings from 'conf/config.js'
 
 const cookies = new Cookies();
 
@@ -38,7 +41,7 @@ export default function Header(props) {
     const headerColorChange = () => {
         const { color, changeColorOnScroll } = props;
         const windowsScrollTop = window.pageYOffset;
-        if (windowsScrollTop > changeColorOnScroll.height) {
+        if (windowsScrollTop > parseInt(0.07 * window.innerHeight)) {
             setScrolled(true)
             document.body
                 .getElementsByTagName("header")[0]
@@ -81,12 +84,98 @@ export default function Header(props) {
             </NavLink>
         </Button>
     }
+
+    const menuTitle = (path, title) => {
+        let stle;
+
+        if (cookies.get("nav") !== path) {
+            stle = classes.linkcolorScrolled
+        } else {
+            stle = classes.selectedLinkcolorScrolled
+        }
+
+        return <MenuItem key={path}>
+            <Button>
+                <NavLink
+                    strict to={path}
+                    className={stle}
+                    activeClassName={stle}
+                >
+                    {title}
+                </NavLink>
+            </Button>
+        </MenuItem>
+
+
+    }
+
+    const mobileHead = (routes) => {
+        let titles = []
+        let mtitle = []
+
+        const [anchorEl, setAnchorEl] = React.useState(null);
+        let resumeClass = scrolled ? classes.linkcolorScrolled : classes.linkcolor
+
+        const handleClick = (event) => {
+            setAnchorEl(event.currentTarget);
+        };
+
+        const handleClose = () => {
+            setAnchorEl(null);
+        };
+
+        for (const route of routes) {
+            if (route.insideDrawer) {
+                mtitle.push(route)
+                if (cookies.get("nav") === route.path) {
+                    resumeClass = scrolled ? classes.selectedLinkcolorScrolled : classes.selectedLinkColor
+                }
+            } else {
+                titles.push(route)
+            }
+
+
+        }
+
+        let menuResume = <div key={"resume"}>
+            <Button className={resumeClass} onClick={handleClick}>
+                Resume
+            </Button>
+            <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+
+            >
+                {
+                    mtitle.map((arr) => {
+                        return menuTitle(arr.path, arr.name)
+                    })
+                }
+            </Menu>
+        </div>
+
+        let buttons = titles.map((arr) => {
+            return hbutton(arr.path, arr.name)
+        })
+
+        buttons.splice(2, 0, menuResume)
+
+        return buttons
+
+
+    }
+
     return (
         <AppBar className={appBarClasses}>
             <Toolbar className={classes.container}>
-                {routes.map((arr) => {
+                {window.innerWidth >= settings.mobile ? routes.map((arr) => {
                     return hbutton(arr.path, arr.name)
-                })}
+                }) :
+                    mobileHead(routes)
+                }
             </Toolbar>
         </AppBar>
     );
@@ -116,8 +205,8 @@ Header.propTypes = {
     // this will cause the sidebar to change the color from
     // props.color (see above) to changeColorOnScroll.color
     // when the window.pageYOffset is heigher or equal to
-    // changeColorOnScroll.height and then when it is smaller than
-    // changeColorOnScroll.height change it back to
+    // parseInt(0.1*window.innerHeight) and then when it is smaller than
+    // parseInt(0.1*window.innerHeight) change it back to
     // props.color (see above)
     changeColorOnScroll: PropTypes.shape({
         height: PropTypes.number.isRequired,

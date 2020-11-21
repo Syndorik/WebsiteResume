@@ -72,10 +72,10 @@ export default function ProfilePage(props) {
                     <Grid item xs={12} sm={8}>
                         <h1 className={classes.fonth1}>About Me</h1>
                         <p className={classes.font}>
-                            I am a datascientist with two masters in AI/Machine learning: one in IMT Atlantique
+                            I undertook two masters in AI/Machine learning: one in IMT Atlantique
                             (formerly Télécom Bretagne) and one in Imperial College of London both completed with the
                             highest honours. I specialised in NLP with my master thesis in topic modeling: I was working
-                            with the Centre of Psychedelic Reserach of Imperial and developped a new model based on
+                            with the Centre of Psychedelic Research of Imperial and developped a new model based on
                             BERT with state of the art results. I like to discover new methods and apply them in
                             personal projects.
                         </p>

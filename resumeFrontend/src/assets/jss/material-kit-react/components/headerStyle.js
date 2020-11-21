@@ -115,7 +115,7 @@ const headerStyle = {
         }
     },
     selectedLinkColor: {
-        color: "#F06000",
+        color: "#F06000 !important",
         "&:hover": {
             color: "#FFFFFF",
             textShadow: "0px 0px 6px rgba(255, 255, 255, 1)",

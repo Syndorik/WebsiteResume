@@ -107,10 +107,10 @@ export default function ProfilePage(props) {
                                         <span><span className={classes.opensansbold}>Subject:</span> Topic modeling<br /></span>
                                         <span>Contributions:<br /></span>
                                         <ul className={classes.ul}>
-                                            <li>Analysed <span className={classes.opensanssemibold}>interviews</span> from the centre of Psychedelic Research of Imperial
+                                            <li>Analysed <span className={classes.opensanssemibold}>interviews</span> from the Centre of Psychedelic Research of Imperial
                                     dealing with the effect of <span className={classes.opensanssemibold}>DMT</span> a psychedelic drug that puts its user into other realms.</li>
                                             <li>Developed a <span className={classes.opensanssemibold}>brand new model using BERT</span> in topic modeling with
-                                        <span className={classes.opensanssemibold}> state of the art</span> results compared to Latent Dirichlet Allocation (PyTorch)</li>
+                                        <span className={classes.opensanssemibold}> state of the art</span> results compared to Latent Dirichlet Allocation (PyTorch).</li>
                                             <li> Developed an evaluation pipeline to compare the LDA and BERT-based pipeline on a common ground.
                                         Based on this, my pipeline returns <span className={classes.opensanssemibold}>significantly better results.</span></li>
                                         </ul>
@@ -155,7 +155,7 @@ export default function ProfilePage(props) {
                                         Produced a <span className={classes.opensanssemibold}>man-agent Interface </span>
                                         for a target simulator using
                                         <span className={classes.opensanssemibold}> JavaFX</span>. The interface
-                                        set parameters to the target simulator through a TCP connection
+                                        sets parameters to the target simulator through a TCP connection
                                     </span>],
                                 [
                                     "Internship Trainee",
@@ -306,7 +306,7 @@ export default function ProfilePage(props) {
                                     "09/2011 - 06/2014",
                                     "La Ville Du Bois, France",
                                     <span>
-                                        Highscool completed with hounours
+                                        Highscool completed with honours
                                     </span>]
                                 ]
 

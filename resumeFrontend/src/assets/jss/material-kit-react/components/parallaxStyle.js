@@ -43,7 +43,7 @@ const parallaxStyle = {
         }
     },
     small: {
-        height: "280px"
+        height: "25vh"
     },
     big: {
         height: "100vh"

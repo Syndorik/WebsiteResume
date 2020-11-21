@@ -239,7 +239,7 @@ export default function ProfilePage(props) {
                             my master thesis nor work project as they are described in the Background page.
                             <span className={classes.opensanssemiboldparagraph}> You can find the source-code of each
                             project by clicking on the Github icon.
-                            When avaialable, you can download the report of a project by clicking on the download icon</span>
+                            When available, you can download the report of a project by clicking on the download icon. </span>
                             If a "cancel" icon appears, this means that the source code is not available.
                         </p>
                     </Grid>
@@ -315,7 +315,7 @@ export default function ProfilePage(props) {
                     )}
                     <Grid item xs={12}>
                         <p className={classes.fontClassicParagraph}>
-                            This timeline shows the different project I have had as well as my studies.
+                            This timeline shows the different project I have done as well as my studies.
                         </p>
                     </Grid>
                     <Grid item xs={12}>
