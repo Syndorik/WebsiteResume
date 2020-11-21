@@ -109,7 +109,7 @@ export default function Header(props) {
 
     }
 
-    const mobileHead = (routes) => {
+    const MobileHead = (routes) => {
         let titles = []
         let mtitle = []
 
@@ -174,7 +174,7 @@ export default function Header(props) {
                 {window.innerWidth >= settings.mobile ? routes.map((arr) => {
                     return hbutton(arr.path, arr.name)
                 }) :
-                    mobileHead(routes)
+                    MobileHead(routes)
                 }
             </Toolbar>
         </AppBar>
