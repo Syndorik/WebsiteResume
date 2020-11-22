@@ -46,6 +46,10 @@ export default function ProfilePage(props) {
         </div>
     }
 
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+    });
+
     const GrowComp = (nameShow, toShow) => {
 
         const [checkedAbstract, setCheckedAbstract] = React.useState(false)

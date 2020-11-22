@@ -33,6 +33,10 @@ export default function ProfilePage(props) {
         classes.imgFluid
     );
 
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+    });
+
 
     const alignedIcons = (icon, text) => {
         return <div className={classes.font}>

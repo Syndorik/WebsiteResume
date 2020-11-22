@@ -52,6 +52,10 @@ export default function ProfilePage(props) {
     const [openBeingSent, setOpenBeingSent] = React.useState(false);
     const [openNotworking, setOpenNotworking] = React.useState(false);
 
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+    });
+
     const handleAlert = () => {
         setOpen(true);
     };

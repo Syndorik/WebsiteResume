@@ -97,6 +97,8 @@ export default function ProfilePage(props) {
 
         React.useEffect(() => {
             window.addEventListener("resize", changeGrid)
+            window.scrollTo(0, 0)
+
         });
 
         var linkProjectComp = urlProject !== undefined ? LinkProject(urlProject) : <NotInterestedIcon fontSize="large" />
