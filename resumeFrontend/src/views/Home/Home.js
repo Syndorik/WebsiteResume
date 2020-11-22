@@ -61,7 +61,7 @@ export default function ProfilePage(props) {
                     <div style={{ textAlign: "center", marginTop: "30px" }}>
                         {LinkIcon("https://github.com/Syndorik/Resume", GitHubIcon)}
                         {LinkIcon("https://www.linkedin.com/in/alexandre-allani/", LinkedInIcon)}
-                        {LinkIcon("", CodeIcon)}
+                        {LinkIcon("https://github.com/Syndorik/WebsiteResume", CodeIcon)}
                     </div>
                 </div>
 
