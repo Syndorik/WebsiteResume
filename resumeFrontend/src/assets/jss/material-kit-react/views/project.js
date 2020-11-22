@@ -3,6 +3,7 @@ import { container, title } from "assets/jss/material-kit-react.js";
 import imagesStyle from "assets/jss/material-kit-react/imagesStyles.js";
 import settings from 'conf/config.js'
 
+
 const profilePageStyle = {
     container,
     contain: {
@@ -13,7 +14,8 @@ const profilePageStyle = {
     containbig: {
         maxWidth: "1420px",
         margin: '0 auto',
-        padding: "0px 30px 0px 30px",
+        padding: window.innerWidth >= settings.mobile ? "0px 30px 0px 30px" : "0px 10px 0px 10px",
+        width: "100% !important",
     },
     profile: {
         padding: "0px 20px 0px 0px",
@@ -86,7 +88,8 @@ const profilePageStyle = {
             "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
     },
     icon: {
-        transform: "scale(1.8)"
+        transform: window.innerWidth >= settings.mobile ? "scale(1.8)" : "scale(1.0)",
+        fontSize: "1.2em"
     },
     sideTitle: {
         font: "1.7em opensans-bold, sans-serif",
@@ -206,7 +209,7 @@ const profilePageStyle = {
         display: "inline-block"
     },
     font: {
-        font: "1em 'opensans-regular', sans-serif",
+        font: window.innerWidth >= settings.mobile ? "1em 'opensans-regular', sans-serif" : "0.8em 'opensans-regular', sans-serif",
         color: "#838C95",
         textAlign: "justify"
     },

@@ -16,10 +16,10 @@ import SubjectIcon from '@material-ui/icons/Subject';
 import Button from '@material-ui/core/Button';
 import emailjs from 'emailjs-com';
 import styles from "assets/jss/material-kit-react/views/contact.js";
-import { AddAlarm } from "@material-ui/icons";
 
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import settings from 'conf/config.js'
 
 
 const useStyles = makeStyles(styles);
@@ -186,7 +186,7 @@ export default function ProfilePage(props) {
                                 required
                                 variant="outlined"
                                 placeholder="Name"
-                                style={{ "width": "70%" }}
+                                style={{ "width": window.innerWidth >= settings.mobile ? "70%" : "100%" }}
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
@@ -205,7 +205,7 @@ export default function ProfilePage(props) {
                                 required
                                 variant="outlined"
                                 placeholder="Email"
-                                style={{ "width": "70%" }}
+                                style={{ "width": window.innerWidth >= settings.mobile ? "70%" : "100%" }}
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
@@ -224,7 +224,7 @@ export default function ProfilePage(props) {
                                 required
                                 variant="outlined"
                                 placeholder="Subject"
-                                style={{ "width": "70%" }}
+                                style={{ "width": window.innerWidth >= settings.mobile ? "70%" : "100%" }}
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
@@ -256,7 +256,7 @@ export default function ProfilePage(props) {
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <h1 className={classNames(classes.profile, classes.sideTitleSmall, classes.margin)}><span>My details</span></h1>
+                        <h1 className={classNames(classes.profile, window.innerWidth >= settings.mobile ? classes.sideTitleSmall : classes.sideTitle, classes.margin)}><span>My details</span></h1>
                         <p className={classes.fontClassic}>Alexandre Allani</p>
                         <p className={classes.fontClassic}>Paris, France</p>
                         <p className={classes.fontClassic}>+33648080121</p>

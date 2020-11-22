@@ -68,7 +68,7 @@ export default function ProfilePage(props) {
                                 <Grid container alignItems="center">
                                     {
                                         skills.map(([skill, normal]) => {
-                                            return <Grid item xs={4} style={{ textAlign: "center", padding: "7px 4px 7px 4px" }}>
+                                            return <Grid key={skill} item xs={4} style={{ textAlign: "center", padding: "7px 4px 7px 4px" }}>
                                                 {normal === undefined ?
                                                     <span className={classNames(classes.fontClassic)}> {skill} </span> :
                                                     <span className={classNames(classes.fontClassic, classes.colorSkilled)}> {skill} </span>}

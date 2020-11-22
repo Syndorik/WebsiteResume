@@ -5,6 +5,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 
 
+import IconButton from '@material-ui/core/IconButton';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import CodeIcon from '@material-ui/icons/Code';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+
+import Grid from '@material-ui/core/Grid';
+
 // core components
 import Header from "components/Header/Header.js";
 
@@ -16,6 +23,14 @@ const useStyles = makeStyles(styles);
 export default function ProfilePage(props) {
     const classes = useStyles();
     const { ...rest } = props;
+
+    const LinkIcon = (urlProject, Micon) => {
+        return <IconButton style={{ padding: "0px 40px" }}>
+            <a rel="noopener noreferrer" className={classes.linkcolorScrolled} href={urlProject} target="_blank">
+                <Micon fontSize="large" style={{ fontSize: "2em" }} />
+            </a>
+        </IconButton >
+    }
     return (
         <div>
             <Header
@@ -25,7 +40,7 @@ export default function ProfilePage(props) {
                 {...rest}
             />
             <Parallax filterlight big image={require("assets/img/profile-bg.jpg")} >
-                <div className={classNames(classes.contain)}>
+                <div className={classNames(classes.contain)} style={{ marginTop: '40px' }}>
                     <h1 className={classes.fonth1}>I'm Alexandre Allani.</h1>
                     <p className={classes.font}>
                         I am a <span className={classes.colorEmph}>datascientist</span> from Paris, I have
@@ -36,7 +51,20 @@ export default function ProfilePage(props) {
                             website is an interactive version of my resume where you can also find some of my side
                             projects. Feel free to contact me if you are interested in my profile.
                         </p>
+                    <p className={classes.font} style={{ marginTop: "30px" }}>
+                        This website was developped using <span className={classes.colorEmph}>ReactJS</span>.
+                        <span className={classes.colorEmph}> Github Action</span> was used for Continuous Integration and
+                        <span className={classes.colorEmph}> Google Kubernetes Engine</span> was used for Continuous Deployment.
+                        The application is deployed on my personnal cluster. You can find the source code of this project along
+                        the deployment templates by clicking on the code icon.
+                    </p>
+                    <div style={{ textAlign: "center", marginTop: "30px" }}>
+                        {LinkIcon("https://github.com/Syndorik/Resume", GitHubIcon)}
+                        {LinkIcon("https://www.linkedin.com/in/alexandre-allani/", LinkedInIcon)}
+                        {LinkIcon("", CodeIcon)}
+                    </div>
                 </div>
+
             </Parallax>
 
         </div >

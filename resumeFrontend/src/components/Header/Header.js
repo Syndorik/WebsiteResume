@@ -114,8 +114,6 @@ export default function Header(props) {
         let mtitle = []
 
         const [anchorEl, setAnchorEl] = React.useState(null);
-        let resumeClass = scrolled ? classes.linkcolorScrolled : classes.linkcolor
-
         const handleClick = (event) => {
             setAnchorEl(event.currentTarget);
         };
@@ -123,6 +121,9 @@ export default function Header(props) {
         const handleClose = () => {
             setAnchorEl(null);
         };
+        let resumeClass = scrolled ? classes.linkcolorScrolled : classes.linkcolor
+
+
 
         for (const route of routes) {
             if (route.insideDrawer) {
@@ -168,14 +169,15 @@ export default function Header(props) {
 
     }
 
+    let Alternative = MobileHead(routes)
+    let bigScreen = routes.map((arr) => {
+        return hbutton(arr.path, arr.name)
+    })
+
     return (
         <AppBar className={appBarClasses}>
             <Toolbar className={classes.container}>
-                {window.innerWidth >= settings.mobile ? routes.map((arr) => {
-                    return hbutton(arr.path, arr.name)
-                }) :
-                    MobileHead(routes)
-                }
+                {window.innerWidth >= settings.mobile ? bigScreen : Alternative}
             </Toolbar>
         </AppBar>
     );

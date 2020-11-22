@@ -43,6 +43,7 @@ import ReactIcon from "views/Components/Icons/ReactIcon.js"
 
 import styles from "assets/jss/material-kit-react/views/project.js";
 import video from "assets/videos/fight.mp4"
+import settings from 'conf/config.js'
 
 const useStyles = makeStyles(styles);
 
@@ -50,6 +51,19 @@ const useStyles = makeStyles(styles);
 export default function ProfilePage(props) {
     const classes = useStyles();
     const { ...rest } = props;
+
+    const [widthIcon, setWidthIcon] = React.useState(0)
+    const ref = React.useRef(null)
+
+    let lpad = styles.containbig.padding.split(" ")[3];
+    lpad = lpad.substring(0, lpad.length - 2)
+
+
+    React.useEffect(() => {
+        if (window.innerWidth >= settings.mobile) {
+            setWidthIcon(ref.current.clientWidth)
+        }
+    })
 
     const LinkProject = (urlProject) => {
         return <IconButton>
@@ -119,8 +133,7 @@ export default function ProfilePage(props) {
 
                     <CardActions>
                         <Grid container justify="flex-end">
-                            <Grid item xs={8} />
-                            <Grid item xs={4} style={{ textAlign: "right" }}>
+                            <Grid item xs={12} style={{ textAlign: "right" }}>
                                 {linkFile}
                                 {linkProjectComp}
                             </Grid>
@@ -137,12 +150,7 @@ export default function ProfilePage(props) {
     const alignedIcons = (icon, text) => {
         return <div className={classes.font}>
             <Grid container direction="row" alignItems="baseline" spacing={2}>
-                <Grid item>
-                    {icon}
-                </Grid>
-                <Grid item>
-                    {text}
-                </Grid>
+                <span ref={ref} style={{ marginRight: "10px" }}>{icon} </span> <span> {text}</span>
             </Grid>
         </div>
     }
@@ -229,12 +237,15 @@ export default function ProfilePage(props) {
             <Parallax small filter image={require("assets/img/profile-bg.jpg")} />
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <Grid container justify="flex-start" className={classes.containbig} direction="row" spacing={3}>
-                    {alignedIcons(
-                        <StarBorderIcon className={classes.icon} style={{ "margin": "0px 4px 0px 16px" }} />,
-                        <h1 className={classNames(classes.profile, classes.sideTitle, classes.addMarginh1)}><span>Starred Projects</span></h1>
-                    )}
                     <Grid item xs={12}>
-                        <p className={classes.fontClassicParagraph}>
+                        {alignedIcons(
+                            <StarBorderIcon className={classes.icon} style={{ "margin": "0px 4px 0px 16px" }} />,
+                            <h1 className={classNames(classes.profile, classes.sideTitle, classes.addMarginh1)}><span>Starred Projects</span></h1>
+                        )}
+                    </Grid>
+                    <Grid item xs={12}>
+                        <p className={classes.fontClassicParagraph}
+                            style={window.innerWidth >= settings.mobile ? { paddingLeft: widthIcon } : {}}>
                             These two side-projects were selected because they are the most representative of my skills. This section does not include
                             my master thesis nor work project as they are described in the Background page.
                             <span className={classes.opensanssemiboldparagraph}> You can find the source-code of each
@@ -244,7 +255,9 @@ export default function ProfilePage(props) {
                         </p>
                     </Grid>
                 </Grid>
-                <Grid container justify="center" align="center" alignItems="stretch" className={classes.containbig} direction="row" spacing={3}>
+                <Grid container justify="center" align="center" alignItems="stretch" className={classes.containbig} direction="row" spacing={3}
+                    style={window.innerWidth >= settings.mobile ? { paddingLeft: (parseInt(lpad) + widthIcon) + "px" } : {}}>
+
                     {FlippedCard(
                         "Age regression using brain MRI scans",
                         <div className={classes.fontClassic} style={{ paddingRight: "4px" }}>
@@ -309,12 +322,16 @@ export default function ProfilePage(props) {
                     )}
                 </Grid>
                 <Grid container justify="flex-start" className={classes.containbig} direction="row" spacing={3}>
-                    {alignedIcons(
-                        <CodeIcon className={classes.icon} style={{ "margin": "0px 4px 0px 16px" }} />,
-                        <h1 className={classNames(classes.profile, classes.sideTitle, classes.addMarginh1)}><span>Project Timeline</span></h1>
-                    )}
                     <Grid item xs={12}>
-                        <p className={classes.fontClassicParagraph}>
+
+                        {alignedIcons(
+                            <CodeIcon className={classes.icon} style={{ "margin": "0px 4px 0px 16px" }} />,
+                            <h1 className={classNames(classes.profile, classes.sideTitle, classes.addMarginh1)}><span>Project Timeline</span></h1>
+                        )}
+                    </Grid>
+                    <Grid item xs={12}>
+                        <p className={classes.fontClassicParagraph}
+                            style={window.innerWidth >= settings.mobile ? { paddingLeft: widthIcon } : {}}>
                             This timeline shows the different project I have done as well as my studies.
                         </p>
                     </Grid>
@@ -364,8 +381,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/deep_learning")}
                                     </Grid>
                                 </Grid>,
@@ -402,8 +419,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_machin_learning_imaging.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/machine_learning_for_imaging")}
                                     </Grid>
@@ -441,8 +458,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_nlp.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/nlp")}
                                     </Grid>
@@ -486,8 +503,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_pdl.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/distributed_ledgers")}
                                     </Grid>
@@ -526,8 +543,7 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={6} />
-                                    <Grid item xs={6} style={{ textAlign: "right" }}>
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_rl_deepQ_part_1.pdf")}
                                         {LinkReport("report_rl_deepQ_part_2.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/reinforcement_learning/maze_traversal")}
@@ -569,8 +585,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_nn.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/machine_learning_basics/neural_network")}
                                     </Grid>
@@ -607,8 +623,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/maths_for_ml")}
                                     </Grid>
                                 </Grid>,
@@ -638,8 +654,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_rl_grid_world.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/reinforcement_learning/gridworld")}
                                     </Grid>
@@ -683,8 +699,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_decision_tree.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/imperial/machine_learning_basics/decision_tree")}
                                     </Grid>
@@ -783,8 +799,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/devops")}
                                     </Grid>
                                 </Grid>,
@@ -820,8 +836,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_datamining.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/datamining_PUBG")}
                                     </Grid>
@@ -852,8 +868,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_film_culture.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/statistics")}
                                     </Grid>
@@ -893,8 +909,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_speaker_strobe_light.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/KAIST/mobile_computing/Project%20of%20the%20semester%20--%20SpeakerAndStrobe")}
                                     </Grid>
@@ -924,8 +940,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_software_engineering.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/KAIST/software_engineering")}
                                     </Grid>
@@ -964,8 +980,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/KAIST/system_programing_labs")}
                                     </Grid>
                                 </Grid>,
@@ -996,8 +1012,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_high_freq.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/KAIST/mobile_computing/Project%203%20--%20HighFreqCommunication")}
                                     </Grid>
@@ -1027,8 +1043,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_blinking_lights.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/KAIST/mobile_computing/Project%202%20--%20Arduino%20Assignement")}
                                     </Grid>
@@ -1058,8 +1074,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkReport("report_weather_app.pdf")}
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/KAIST/mobile_computing/Project%201%20--%20WeatherApp")}
                                     </Grid>
@@ -1099,8 +1115,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/network_application")}
                                     </Grid>
                                 </Grid>,
@@ -1130,8 +1146,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/pixar_project")}
                                     </Grid>
                                 </Grid>
@@ -1187,8 +1203,8 @@ export default function ProfilePage(props) {
                                         )}
 
                                     </Grid>
-                                    <Grid item xs={8} />
-                                    <Grid item xs={4} style={{ textAlign: "right" }}>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
                                         {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/pyrat_french_only")}
                                     </Grid>
                                 </Grid>,

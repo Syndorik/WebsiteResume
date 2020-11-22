@@ -11,7 +11,7 @@ const profilePageStyle = {
         textShadow: "0px 1px 3px rgba(0, 0, 0, .8)"
     },
     font: {
-        font: window.innerWidth >= settings.mobile ? "1.5em 'Libre Baskerville', serif" : "1em 'Libre Baskerville', serif",
+        font: window.innerWidth >= settings.mobile ? "1.5em 'Libre Baskerville', serif" : window.innerWidth >= settings.small ? "1em 'Libre Baskerville', serif" : "0.8em 'Libre Baskerville', serif",
         color: "#A8A8AA",
         textShadow: "0px 1px 2px rgba(0, 0, 0, .5)",
         textAlign: "justify"
@@ -23,6 +23,15 @@ const profilePageStyle = {
         maxWidth: "1020px",
         margin: '0 auto',
         padding: "0px 15px 0px 15px",
+    },
+    linkcolorScrolled: {
+        color: "#ffffff",
+        "&:hover": {
+            color: "#ffffff"
+        },
+        "&:focus": {
+            color: "#ffffff"
+        }
     },
 };
 

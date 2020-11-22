@@ -9,7 +9,8 @@ const profilePageStyle = {
     contain: {
         maxWidth: "1020px",
         margin: '0 auto',
-        padding: "0px 30px 0px 30px",
+        padding: window.innerWidth >= settings.mobile ? "0px 30px 0px 30px" : "0px 10px 0px 10px",
+        width: "100% !important",
     },
     profile: {
         padding: "0px 20px 0px 0px",
