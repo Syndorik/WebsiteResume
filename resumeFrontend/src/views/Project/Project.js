@@ -99,7 +99,7 @@ export default function ProfilePage(props) {
             window.addEventListener("resize", changeGrid)
             window.scrollTo(0, 0)
 
-        });
+        }, []);
 
         var linkProjectComp = urlProject !== undefined ? LinkProject(urlProject) : <NotInterestedIcon fontSize="large" />
 
@@ -261,18 +261,18 @@ export default function ProfilePage(props) {
                     style={window.innerWidth >= settings.mobile ? { paddingLeft: (parseInt(lpad) + widthIcon) + "px" } : {}}>
 
                     {FlippedCard(
-                        "Age regression using brain MRI scans",
+                        "Age regression using MRI brain scans",
                         <div className={classes.fontClassic} style={{ paddingRight: "4px" }}>
                             <p style={{ marginTop: "20px", marginBottom: "0px" }}>
                                 Volume based regression:</p>
                             <p style={{ paddingLeft: "20px" }}>
                                 The purpose of this task was to first predict the volume of some areas in the brain using
-                                3D scans MRI. A Unet architecture with residuals was used to do this. Then using a
+                                3D MRI scans. A Unet architecture with residuals was used to do this. Then using a
                                 regression model, we could use the volume to predict the age of a patient.
                                 Neural Network, SVMs, Linear Regression and xgboost methods were used for this second task.
                             </p>
                             <p>
-                                Another part of this project was to directly use a Unet architecture with residuals to predict
+                                Another part of the project was to directly use a Unet architecture with residuals to predict
                                 the age of the patient.
                             </p>
                         </div>,
@@ -285,32 +285,32 @@ export default function ProfilePage(props) {
                         "Pokemon-game using Ethereum blockchain",
                         <div className={classes.fontClassic} style={{ paddingRight: "4px" }}>
                             <p style={{ marginBottom: "1px" }}>
-                                The project was about creating a Pokemon-like game where every action/state was stored on an Ethereum-like blockchain.
+                                The project was about creating a Pokemon-like game where each action/state was stored on an Ethereum-like blockchain.
                             </p>
                             {GrowComp(
                                 "The game have the following specificities",
                                 <ul className={classes.ul}>
-                                    <li>Every Pokemon is uniquely identified</li>
-                                    <li>Users can sell Pokemons to another user according to a price</li>
-                                    <li>Users can sell in the market a Pokemon</li>
+                                    <li>Each Pokemon is uniquely identified.</li>
+                                    <li>Users can sell Pokemons to another user according to a price.</li>
+                                    <li>Users can sell a Pokemon in the market.</li>
                                     <li>Fighting mechanism. Each Pokemon have the following characteristics: Species, Health Points, Attack Points,
                                     Defense Points, level, and type. The fighting is based on pseudo randomness and the previous statistics.
                                     If a Pokemon wins a fight, he wins XP points. With enough XP points, the Pokemon can level up which makes
                                     him stronger in general.</li>
                                     <li>Breeding mechanism.</li>
-                                    <li>Users can trade Pokemons themselves.</li>
+                                    <li>Users can trade Pokemons between them.</li>
                                 </ul>,
                                 "(click to mask)",
                                 "(click to show)",
                             )}
                             <p>
                                 The "backend" part of the game is done with Solidity contracts over the blockchain.
-                                The "frontend" part is done in ReactJS. Videos showing the results along the source code are available on my github.
+                                The "frontend" part is done in ReactJS. Videos showing the results along with the source code are available on my github.
                                 You can find a sample video of a fight below, and other videos inside the video folder of the related repository.
 
                             </p>
                             <p>
-                                The different security issues are dealt with in the related reports, especially about the randomness.
+                                The different security issues are dealt with in the related reports, especially the randomness.
 
                             </p>
                         </div>,
@@ -334,7 +334,7 @@ export default function ProfilePage(props) {
                     <Grid item xs={12}>
                         <p className={classes.fontClassicParagraph}
                             style={window.innerWidth >= settings.mobile ? { paddingLeft: widthIcon } : {}}>
-                            This timeline shows the different project I have done as well as my studies.
+                            This timeline shows the projects I have worked on as well as my academic and professional background.
                         </p>
                     </Grid>
                     <Grid item xs={12}>
@@ -361,8 +361,8 @@ export default function ProfilePage(props) {
                                         {GrowComp("",
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
-                                                    Convolutional neural network : Recreated a framework for Convolutional Neural Network
-                                                    using Pytroch's simple functions (excluding the use of conv2d function ...).
+                                                    Convolutional neural network : Recreated a framework for Convolutional Neural Networks
+                                                    using Pytroch's simple functions (excluding the use of conv2d function...).
                                                     Tested the framework against simple examples and datasets.
                                                 </p>
                                                 <p>
@@ -399,13 +399,13 @@ export default function ProfilePage(props) {
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
-                                            Age regression using brain MRI scans
+                                            Age regression using MRI brain scans
                                         </p>
                                         {GrowComp("",
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
                                                     Volume based regression:<br />
-                                                The purpose of this task was to first predict the volume of some areas in the brain using 3D scans MRI.
+                                                The purpose of this task was to first predict the volume of some areas in the brain using 3D MRI scans.
                                                 A Unet architecture with residuals was used to do this. Then using a regression model, we could use the
                                                 volume to predict the age of a patient. Neural Network, SVMs, Linear Regression and xgboost methods were
                                                 used for this second task.
@@ -443,11 +443,11 @@ export default function ProfilePage(props) {
                                         {GrowComp("",
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
-                                                    In this project, a dataset containing the following was given:
+                                                    In this project, we were given a dataset containing the following:
                                                     <ul className={classes.ul}>
-                                                        <li>Source sentence in English</li>
-                                                        <li>Machine Translation of the source sentence</li>
-                                                        <li>Quality of the translation evaluated by several peers. The z-score of the different evaluation is returned.</li>
+                                                        <li>Source sentence in English,</li>
+                                                        <li>Machine Translation of the source sentence,</li>
+                                                        <li>Quality of the translation evaluated by several peers. The z-score of the different evaluations is returned.</li>
                                                     </ul>
                                                 </p>
                                                 <p>
@@ -482,21 +482,21 @@ export default function ProfilePage(props) {
                                         {GrowComp("",
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
-                                                    The project was about creating a Pokemon-like game where every action/state was stored on an Ethereum-like blockchain. The game have the following specificities:
+                                                    The project was about creating a Pokemon-like game where each action/state was stored on an Ethereum-like blockchain. The game have the following specificities:
                                                     <ul className={classes.ul}>
-                                                        <li>Every Pokemon is uniquely identified</li>
-                                                        <li>Users can sell Pokemons to another user according to a price</li>
-                                                        <li>Users can sell in the market a Pokemon</li>
+                                                        <li>Each Pokemon is uniquely identified.</li>
+                                                        <li>Users can sell Pokemons to another user according to a price.</li>
+                                                        <li>Users can sell a Pokemon in the market.</li>
                                                         <li>Fighting mechanism. Each Pokemon have the following characteristics: Species, Health Points, Attack Points, Defense Points, level, and type. The fighting is based on pseudo randomness and the previous statistics. If a Pokemon wins a fight, he wins XP points. With enough XP points, the Pokemon can level up which makes him stronger in general.</li>
-                                                        <li>Breeding mechanism</li>
-                                                        <li>Users can trade Pokemons themselves</li>
+                                                        <li>Breeding mechanism.</li>
+                                                        <li>Users can trade Pokemons between them.</li>
                                                     </ul>
                                                 </p>
                                                 <p>
                                                     The "backend" part of the game is done with Solidity contracts over the blockchain. The "frontend" part is done in ReactJS. Videos showing the results along the source code are available on my github.
                                                 </p>
                                                 <p>
-                                                    The different security issues are dealt with in the related reports, especially about the randomness.
+                                                    The different security issues are dealt with in the related reports, especially the randomness.
                                                 </p>
                                             </div>,
                                             "Mask content",
@@ -569,16 +569,16 @@ export default function ProfilePage(props) {
                                                 <p style={{ marginTop: "0px" }}>
                                                     In this group project, I developed a Neural Network Framework. It includes:
                                                     <ul className={classes.ul}>
-                                                        <li>Linear layer</li>
-                                                        <li>ctivation functions layer (sigmoid ...)</li>
-                                                        <li>Evaluation layers (Binary Cross entropy ...)</li>
+                                                        <li>Linear layer,</li>
+                                                        <li>Activation functions layer (sigmoid...),</li>
+                                                        <li>Evaluation layers (Binary Cross entropy...).</li>
                                                     </ul>
                                                 </p>
                                                 <p>
                                                     Then we used TensorFlow to solve a classification task in insurance pricing.
                                                 </p>
                                                 <p>
-                                                    Finally using TensorFlow again, we created another insurance pricing model using real-world data. Our model was competing against models of other classmates. The purpose was to give the best pricing for each individual according to their risk. Each individual then chooses automatically the lower price among those proposed. Models were then ranked according to the profit they made.
+                                                    Finally using TensorFlow again, we created another insurance pricing model with real-world data. Our model was competing against models of other classmates. The purpose was to give the best pricing for each individual according to their risk. Each individual then chose automatically the lower price among those proposed. Models were then ranked according to the profit they made.
                                                 </p>
                                             </div>,
                                             "Mask content",
@@ -611,11 +611,11 @@ export default function ProfilePage(props) {
                                                 <p style={{ marginTop: "0px" }}>
                                                     The algorithm implemented were:
                                                     <ul className={classes.ul}>
-                                                        <li>Linear Model algorithm</li>
-                                                        <li>Bayesian Model algorithm</li>
-                                                        <li>LDA</li>
-                                                        <li>PCA, KPCA</li>
-                                                        <li>SVM</li>
+                                                        <li>Linear Model algorithm,</li>
+                                                        <li>Bayesian Model algorithm,</li>
+                                                        <li>LDA,</li>
+                                                        <li>PCA, KPCA,</li>
+                                                        <li>SVM.</li>
                                                     </ul>
                                                 </p>
                                             </div>,
@@ -646,8 +646,8 @@ export default function ProfilePage(props) {
                                         {GrowComp("",
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
-                                                    Understanding of Markov Decision Process and basics of Reinforcement learning in a Grid World.<br />
-                                                    With this project, I learned the underlying maths of Reinforcement learning and had the chance to code the main algorithms : Value Iteration, Policy Iteration, Tabular Q-learning ...
+                                                    Understanding of Markov Decision Process and basics of Reinforcement learning in a Grid World.<br /><br />
+                                                    With this project, I learned the underlying maths of Reinforcement learning and had the chance to code the main algorithms : Value Iteration, Policy Iteration, Tabular Q-learning...
                                                 </p>
                                             </div>,
                                             "Mask content",
@@ -681,18 +681,18 @@ export default function ProfilePage(props) {
                                                 <p style={{ marginTop: "0px" }}>
                                                     In this group project, I developed a Decision Tree framework in Python. This framework includes:
                                                     <ul className={classes.ul}>
-                                                        <li>Single-threaded decision tree</li>
-                                                        <li>A parallelized version of a decision</li>
-                                                        <li>Testing methods (Cross-Validation, confusion Matrix ...)</li>
-                                                        <li>Pruning of decision tree</li>
-                                                        <li>Graphic representation of a decision tree</li>
+                                                        <li>Single-threaded decision tree,</li>
+                                                        <li>Parallelized version of a decision,</li>
+                                                        <li>Testing methods (Cross-Validation, confusion Matrix...),</li>
+                                                        <li>Pruning of decision tree,</li>
+                                                        <li>Graphic representation of a decision tree,</li>
                                                     </ul>
                                                 </p>
                                                 <p>
-                                                    The framework was tested on a real-life problem: predict the localization of a person in a flat, based on the strength of each wifi access points.
+                                                    The framework was tested on a real-life problem: to predict the localisation of a person in a flat, based on the strength of each wifi access points.
                                                 </p>
                                                 <p>
-                                                    The framework gave expected results.
+                                                    The framework gave the expected results.
                                                 </p>
                                             </div>,
                                             "Mask content",
@@ -744,7 +744,7 @@ export default function ProfilePage(props) {
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
-                                            Coded a recommendation Engine coded from scratch. The company was a fashion-based start-up. Check out the background page for more information.
+                                            Coded a recommendation Engine from scratch. The company was a fashion-based start-up. Check out the background page for more information.
                                         </p>
                                     </Grid>
                                 </Grid>
@@ -770,40 +770,9 @@ export default function ProfilePage(props) {
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
-                                            In this challenge, I had a dataset containing all the sales throughout a year and a half of two service stations. We built and implemented a Machine Learning model in order to predict the number of product sold in a service station for a given date.
+                                            In this challenge, I had a dataset containing all the sales throughout a year and a half of two service stations. We built and implemented a Machine Learning model in order to predict the number of products sold in a service station for a given date.
                                         </p>
 
-                                    </Grid>
-                                </Grid>,
-                                true
-
-                            )}
-
-                            {Project(
-                                "Data Engineering",
-                                "Télécom Bretagne",
-                                "October 2018 - December 2018",
-                                <DockerIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
-                                        <p>
-                                            Deployment of a Photo sharing website
-                                        </p>
-                                        {GrowComp("",
-                                            <div>
-                                                <p style={{ marginTop: "0px" }}>
-                                                    The purpose of this project was to create thanks to a heat template VMs on Openstack and to deploy an application on those VMs. Here we had 3 VM (Master-salve running the application) and 3 VM runing the database (mongoDB).
-                                                </p>
-                                            </div>,
-                                            "Mask content",
-                                            "Show content"
-
-                                        )}
-
-                                    </Grid>
-
-                                    <Grid item xs={12} style={{ textAlign: "right" }}>
-                                        {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/devops")}
                                     </Grid>
                                 </Grid>,
                                 true
@@ -902,7 +871,7 @@ export default function ProfilePage(props) {
                                         {GrowComp("",
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
-                                                    This project is divided in two applications. In the application "LightPart" you will find an application that turns the phone flashlight into a strobe light that reacts to the music. This means that the light will blink according to the rhythm of the music. In the application "Whole Application Source Code" you will find the application that connects two smartphones and turn them into (almost) synchronized speakers, with the flashlight acting as a strobelight. (Android Studio/ Java). I made the Light part in this project, and helped on the Bluetooth connection.
+                                                    This project is divided in two applications. In the application "LightPart" you will find an application that turns the phone flashlight into a strobe light that reacts to the music. This means that the light will blink according to the rhythm of the music. In the application "Whole Application Source Code" you will find the application that connects two smartphones and turns them into (almost) synchronized speakers, with the flashlight acting as a strobelight. (Android Studio/ Java). I made the Light part in this project, and helped on the Bluetooth connection on the latter part.
                                                 </p>
                                             </div>,
                                             "Mask content",
@@ -933,7 +902,7 @@ export default function ProfilePage(props) {
                                         {GrowComp("",
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
-                                                    The application is a timetable app designed for KAIST students. It records all the classes but also personal events. This application uses the smartphone as a database (Room module of Android) since I did not have access to a distant database. The purpose of this project was to use Software Engineering methods to develop the application. I was the only developer on the team. You will find also the SRS and SDD of the project on the Github link (Android / Java)
+                                                    The application is a timetable app designed for KAIST students. It records all the classes but also personal events. This application uses the smartphone as a database (Room module of Android) since I did not have access to a distant database. The purpose of this project was to use Software Engineering methods to develop the application. I was the only developer on the team. You will find also the SRS and SDD of the project on the Github link (Android / Java).
                                                 </p>
                                             </div>,
                                             "Mask content",
@@ -966,9 +935,9 @@ export default function ProfilePage(props) {
                                                 <p style={{ marginTop: "0px" }}>
                                                     List of labs:
                                                     <ol className={classes.ul}>
-                                                        <li>Implementation of different function with some limitation. Most functions had to be coded with bitwise operators. (C)</li>
+                                                        <li>Implementation of different functions with some limitation. Most functions had to be coded with bitwise operators. (C)</li>
                                                         <li>Defusing a binary bomb by reading Assembly code of the object file. (Assembly / GDB)</li>
-                                                        <li>Attacking a program with the buffer-overflow attack. I had first to do a simple buffer overflow attack. Then it was more working around protections that exist to protect an application from such attacks. (Assembly / GDB)</li>
+                                                        <li>Attacking a program with the buffer-overflow attack. I first had to do a simple buffer overflow attack. Then it was more working around protections that exist to protect an application from such attacks. (Assembly / GDB)</li>
                                                         <li>The first part of the lab was about writing a cache simulator. The second part was about coding a cache-friendly version of the matrix transpose function. (C/GDB)</li>
                                                         <li>This lab was mostly dealing with signals and processes. I had to create almost from scratch a very light version of a linux shell. (C/GDB)</li>
                                                         <li>In this lab I had to write from scratch the functions malloc, realloc and free. I used segregated free list to achieve that. (C/GDB)</li>
@@ -999,13 +968,13 @@ export default function ProfilePage(props) {
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
-                                            Communication Smartphone-Arduino in with High Frequencies wavesound
+                                            Communication Smartphone-Arduino with High Frequencies wavesound
                                         </p>
                                         {GrowComp("",
                                             <div>
 
                                                 <p style={{ marginTop: "0px" }}>
-                                                    The project involves an Android Application and Arduino. The Arduino is sending (according to a protocol based on 3 frequencies 19KHz, 20KHz, 21KHz) a message that the Android Application has to decode. (Arduino/C++, Android Studio/Java)
+                                                    The project involves an Android Application and Arduino. The Arduino is sending a message that the Android Application has to decode according to a protocol based on 3 frequencies 19KHz, 20KHz, 21KHz. (Arduino/C++, Android Studio/Java)
                                                 </p>
                                             </div>,
                                             "Mask content",
@@ -1031,7 +1000,7 @@ export default function ProfilePage(props) {
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
-                                            Communication Smartphone-Arduino in with blinking lights
+                                            Communication Smartphone-Arduino with blinking lights
                                         </p>
                                         {GrowComp("",
                                             <div>
@@ -1091,8 +1060,39 @@ export default function ProfilePage(props) {
                                 "February 2018 - June 2018",
                                 <SchoolIcon />,
                                 <p>
-                                    Started working at Sia Partners as a data scientist intern
+                                    Started my semester abroad in KAIST
                                 </p>
+                            )}
+
+                            {Project(
+                                "Data Engineering",
+                                "Télécom Bretagne",
+                                "October 2017 - December 2017",
+                                <DockerIcon />,
+                                <Grid container justify="flex-end">
+                                    <Grid item xs={12} className={classes.fontClassic}>
+                                        <p>
+                                            Deployment of a Photo sharing website
+                                        </p>
+                                        {GrowComp("",
+                                            <div>
+                                                <p style={{ marginTop: "0px" }}>
+                                                    The purpose of this project was to create automatically VMs on Openstack and to deploy an application on those VMs. In the project, we had 3 replica (Master-salve running the application) and 3 replica runing the database (mongoDB).
+                                                </p>
+                                            </div>,
+                                            "Mask content",
+                                            "Show content"
+
+                                        )}
+
+                                    </Grid>
+
+                                    <Grid item xs={12} style={{ textAlign: "right" }}>
+                                        {LinkProject("https://github.com/Syndorik/Resume/tree/master/IMT_atlantique/devops")}
+                                    </Grid>
+                                </Grid>,
+                                true
+
                             )}
 
                             {Project(
@@ -1108,7 +1108,7 @@ export default function ProfilePage(props) {
                                         {GrowComp("",
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
-                                                    The purpose of this project was to code the applicative layer (from the osi model) in a basic chat application/ movie chat. One could enter the application and chat with other people connected. One could also go into a "movie chat room", which is basically a chat room where you can watch a film. I did not code the GUI part. However I decided what protocol to use and implemented it in UDP and TCP. This application is made with twisted (python's module)
+                                                    The purpose of this project was to code the applicative layer (from the OSI model) in a basic chat application/ movie chat. One could enter the application and chat with other people connected. One could also go into a "movie chat room", which is basically a chat room where you can watch a film. I did not code the GUI part. However I decided what protocol to use and implemented it in UDP and TCP. This application is made with twisted (Python's module)
                                                 </p>
                                             </div>,
                                             "Mask content",
@@ -1169,7 +1169,7 @@ export default function ProfilePage(props) {
                                         {GrowComp("",
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
-                                                    Introduction to C++ and Arduino. Built and coded a remote controlled. The car was controlled over Bluetooth and it was able to read and write RFID cards.<br />
+                                                    Introduction to C++ and Arduino. Built a remote controlled car. The car was controlled over Bluetooth and it was able to read and write RFID cards.<br />
                                                     The aim of this project was to participate in a "car competition". The winner was the car who read all the RFID tags and crossed the line first.
                                                 </p>
                                             </div>,
@@ -1191,12 +1191,12 @@ export default function ProfilePage(props) {
                                 <Grid container justify="flex-end">
                                     <Grid item xs={12} className={classes.fontClassic}>
                                         <p>
-                                            Implementation of the best graph traversal algorithm according to a given Maze.
+                                            Implementation of the best graph traversal algorithm according to a given maze.
                                         </p>
                                         {GrowComp("",
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
-                                                    This project is revolving around the traveling salesman problem. I had a snake on a randomly generated maze. The snake had to retrieve all the cheese in it. And I had a pre-processing of 3 seconds. Each file that you can find on my GitHub is an algorithm that I made to solve this problem the fastest way possible. Basically the fastest one is a mix between a greedy algorithm and the travel salesman algorithm.(Python)
+                                                    This project is revolving around the traveling salesman problem. I had a snake on a randomly generated maze. The snake had to retrieve all the cheese in it. And I had a pre-processing of 3 seconds. Each file that you can find on my GitHub is an algorithm that I made to solve this problem the fastest way possible. Basically the fastest one is a mix between a greedy algorithm and the travel salesman algorithm. (Python)
                                                 </p>
                                             </div>,
                                             "Mask content",
@@ -1219,12 +1219,12 @@ export default function ProfilePage(props) {
                                 "September 2016 - November 2016",
                                 <SchoolIcon />,
                                 <p>
-                                    Started Télécom Bretagne french engineering school
+                                    Started Télécom Bretagne, a french engineering school
                                 </p>
                             )}
 
                             {StartWork(
-                                "Prépa Lycée Blaise Pascal",
+                                "Classe Préparatoire MP, Lycée Blaise Pascal",
                                 "Orsay, France",
                                 "September 2014 - June 2016",
                                 <SchoolIcon />,

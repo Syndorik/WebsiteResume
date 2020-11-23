@@ -48,7 +48,7 @@ export default function ProfilePage(props) {
 
     React.useEffect(() => {
         window.scrollTo(0, 0)
-    });
+    }, []);
 
     const GrowComp = (nameShow, toShow) => {
 
@@ -103,7 +103,7 @@ export default function ProfilePage(props) {
                         {
                             addexp(
                                 "Imperial College of London",
-                                [["Thesis completed with Distinctions (first-class honours)",
+                                [["Thesis completed with Distinction (first-class honours)",
                                     "03/2020 - 09/2020",
                                     "London, United Kingdom",
                                     <span>
@@ -130,19 +130,19 @@ export default function ProfilePage(props) {
                                     <span>
                                         <span className={classes.opensansbold}>Data scientist for Cleep:<br /></span>
                                         <ul className={classes.ul}>
-                                            <li><span className={classes.opensanssemibold}>Web scrapping</span> for Cleep in NodeJS, for a startup specialised in fashion.
-                                            I retrieved main elements of shopping pages such as photos, prices, name of products ...</li>
+                                            <li><span className={classes.opensanssemibold}>Web scrapping</span> in NodeJS for Cleep, a startup specialised in fashion.
+                                            I retrieved main elements of shopping pages such as photos, prices, name of products...</li>
                                             <li>Development of a <span className={classes.opensanssemibold}>recommendation engine</span> based on the web scrapped data for
                                         Cleep using Java, Neo4j, ArangoDB. The recommendation engine was based
-                                            on graph traversal techniques</li>
+                                            on graph traversal techniques.</li>
                                         </ul>
                                         <span className={classes.opensansbold}>Data engineer missions:<br /></span>
                                         <ul className={classes.ul}>
-                                            <li>Participated to the creation of Sia Partners' <span className={classes.opensanssemibold}>new deployment system</span> using
+                                            <li>Participated in the creation of Sia Partners' <span className={classes.opensanssemibold}>new deployment system</span> using
                                         Docker, DockerCompose, Gitlab CI/CD, Kubernetes, Google Cloud Platform,
-                                            PostgreSQL</li>
+                                            PostgreSQL.</li>
                                             <li><span className={classes.opensanssemibold}>Web Development back and front</span>: Created APIs and connected them to the new deployment platform using
-                                            Python-Flask and Docker</li>
+                                            Python-Flask and Docker.</li>
                                         </ul>
                                     </span>]]
 
@@ -159,7 +159,7 @@ export default function ProfilePage(props) {
                                         Produced a <span className={classes.opensanssemibold}>man-agent Interface </span>
                                         for a target simulator using
                                         <span className={classes.opensanssemibold}> JavaFX</span>. The interface
-                                        sets parameters to the target simulator through a TCP connection
+                                        sets parameters to the target simulator through a TCP connection.
                                     </span>],
                                 [
                                     "Internship Trainee",
@@ -167,7 +167,7 @@ export default function ProfilePage(props) {
                                     "Paris, France",
                                     <span>
                                         Produced a <span className={classes.opensanssemibold}>promotional video </span>
-                                        on an optronic mast.
+                                        for an optronic mast.
                                     </span>]
                                 ]
 
@@ -197,7 +197,7 @@ export default function ProfilePage(props) {
                                             Math </span>for Machine Learning, Reinforcement Learning, <span className={classes.opensanssemibold}>
                                             Computer Vision, Deep Learning</span>, Machine
                                         Learning for Imaging, <span className={classes.opensanssemibold}>NLP</span>,
-                                        Principle of Distributed Ledgers
+                                        Principle of Distributed Ledgers.
                                         <div>
                                             {GrowComp(
                                                 "Course details",
@@ -205,17 +205,17 @@ export default function ProfilePage(props) {
                                                     <span className={classes.opensansbold}>Core Courses:</span>
                                                     <ul className={classes.ul}>
                                                         <li>Reinforcement Learning: Markov Reward Process, Bellman's equation, Tabular Q learning, Deep Q Learning.</li>
-                                                        <li>Machine Learning Basics: Core ML concepts, Decision Trees, Neural Network concepts, GMMs</li>
-                                                        <li>Computer Vision, features detection (edge/corners), SIFT/SURF descriptor, Region-based and texture-based classification, stereo matching, photometric stereo</li>
-                                                        <li>Math for Machine Learning: Linear Regression, SVM, LDA, KLDA, PCA</li>
-                                                        <li>Machine Learning for Imaging: Convolutional Neural Network, Unet, Fast-RCNN, YOLO</li>
-                                                        <li>NLP: Naive Bayes Classifier, Pared trees (CKY algorithm), Sequence to sequence models (RNN, LSTM), UlmFit, Transformers, BERT</li>
-                                                        <li>Deep Learning, Convolutional Neural Networ, Recurrent Neural Network, Variationnal Auto Encoders, Generative Adversarial Network</li>
+                                                        <li>Machine Learning Basics: Core ML concepts, Decision Trees, Neural Network concepts, GMMs.</li>
+                                                        <li>Computer Vision, features detection (edge/corners), SIFT/SURF descriptor, Region-based and texture-based classification, stereo matching, photometric stereo.</li>
+                                                        <li>Math for Machine Learning: Linear Regression, SVM, LDA, KLDA, PCA.</li>
+                                                        <li>Machine Learning for Imaging: Convolutional Neural Network, Unet, Fast-RCNN, YOLO.</li>
+                                                        <li>NLP: Naive Bayes Classifier, Pared trees (CKY algorithm), Sequence to sequence models (RNN, LSTM), UlmFit, Transformers, BERT.</li>
+                                                        <li>Deep Learning, Convolutional Neural Networ, Recurrent Neural Network, Variationnal Auto Encoders, Generative Adversarial Network.</li>
                                                     </ul>
                                                     <span className={classes.opensansbold}>Minor Courses:</span>
                                                     <ul className={classes.ul}>
-                                                        <li>Scalable Systems and Data : Study of databases core concepts and scalable computing</li>
-                                                        <li>Principle of Distributed Ledgers : Blockchain concepts</li>
+                                                        <li>Scalable Systems and Data : Study of databases core concepts and scalable computing.</li>
+                                                        <li>Principle of Distributed Ledgers : Blockchain concepts.</li>
                                                     </ul>
                                                 </div>
                                             )}
@@ -235,22 +235,22 @@ export default function ProfilePage(props) {
                                     "Brest, France",
                                     <span>
                                         Degree completed with highest GPA score possible: 3.99/4. Relevant courses
-                                        include: <span className={classes.opensanssemibold}>Data science</span> :
+                                        include: <span className={classes.opensanssemibold}>Data science, </span>
                                         <span className={classes.opensanssemibold}>Statistical Machine Learning,
                                         Data mining,</span> Big Data, Decision-making. Devops,
-                                        Mathematics for Signal Processing, Network
+                                        Mathematics for Signal Processing, Network.
                                         <div>
                                             {GrowComp(
                                                 "Course details",
                                                 <div>
                                                     <span className={classes.opensansbold}>Core courses in the third year:</span>
                                                     <ul className={classes.ul}>
-                                                        <li>Statistical Machine Learning</li>
-                                                        <li>Inferential Statistics</li>
-                                                        <li>Data mining</li>
-                                                        <li>Big Data</li>
-                                                        <li>Business Intelligence</li>
-                                                        <li>Decision making</li>
+                                                        <li>Statistical Machine Learning,</li>
+                                                        <li>Inferential Statistics,</li>
+                                                        <li>Data mining,</li>
+                                                        <li>Big Data,</li>
+                                                        <li>Business Intelligence,</li>
+                                                        <li>Decision making.</li>
                                                     </ul>
                                                     <span className={classes.opensansbold}>Core courses in the first and second year :</span>
                                                     <ul className={classes.ul}>
@@ -280,7 +280,7 @@ export default function ProfilePage(props) {
                                     "Daejeon, South-Korea",
                                     <span>
                                         Relevant courses : Mobile Computing, <span className={classes.opensanssemibold}>
-                                            System Programming, Software Engineering</span>
+                                            System Programming, Software Engineering.</span>
                                     </span>]
                                 ]
 
@@ -296,7 +296,7 @@ export default function ProfilePage(props) {
                                     <span>
                                         Relevant modules: Linear Algebra, Numerical and Functional Sequences,
                                         Multivariate Calculus, Group Theory, Differential Calculus, Differential Equations
-                                        Electromagnetism, Thermodynamics, Mechanics, Optics, Quantum Physics, Thermostatistics
+                                        Electromagnetism, Thermodynamics, Mechanics, Optics, Quantum Physics, Thermostatistics.
                                     </span>]
                                 ]
 
@@ -310,7 +310,7 @@ export default function ProfilePage(props) {
                                     "09/2011 - 06/2014",
                                     "La Ville Du Bois, France",
                                     <span>
-                                        Highscool completed with honours
+                                        Highscool completed with honours.
                                     </span>]
                                 ]
 

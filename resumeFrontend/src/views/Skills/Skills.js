@@ -48,7 +48,7 @@ export default function ProfilePage(props) {
         React.useEffect(() => {
             window.addEventListener("resize", changeGrid)
             window.scrollTo(0, 0)
-        });
+        }, []);
 
         return <Grid item xs={gridSize}>
             <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" containerStyle={{ height: "100%", alignItems: "center" }}>
@@ -110,7 +110,7 @@ export default function ProfilePage(props) {
                         <p className={classes.fontClassicParagraph}>
                             You will find on this page a list of my skills. The skills tagged in
                             <span className={classes.colorSkilled}> orange </span> are the ones in which I am most
-                            proficient
+                            proficient.
                             </p>
                     </Grid>
                 </Grid>

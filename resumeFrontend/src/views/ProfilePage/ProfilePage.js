@@ -35,7 +35,7 @@ export default function ProfilePage(props) {
 
     React.useEffect(() => {
         window.scrollTo(0, 0)
-    });
+    }, []);
 
 
     const alignedIcons = (icon, text) => {
@@ -77,9 +77,9 @@ export default function ProfilePage(props) {
                     <Grid item xs={12} sm={8}>
                         <h1 className={classes.fonth1}>About Me</h1>
                         <p className={classes.font}>
-                            I undertook two masters in AI/Machine learning: one in IMT Atlantique
-                            (formerly Télécom Bretagne) and one in Imperial College of London both completed with the
-                            highest honours. I specialised in NLP with my master thesis in topic modeling: I was working
+                            I undertook two masters in AI/Machine learning: one at IMT Atlantique
+                            (formerly Télécom Bretagne) and one at Imperial College of London both completed with the
+                            highest honours. I specialised in NLP with a master thesis in topic modeling: I was working
                             with the Centre of Psychedelic Research of Imperial and developped a new model based on
                             BERT with state of the art results. I like to discover new methods and apply them in
                             personal projects.

@@ -54,7 +54,7 @@ export default function ProfilePage(props) {
 
     React.useEffect(() => {
         window.scrollTo(0, 0)
-    });
+    }, []);
 
     const handleAlert = () => {
         setOpen(true);
@@ -179,7 +179,7 @@ export default function ProfilePage(props) {
                     </Grid>
                     <Grid item xs={12}>
                         <p className={classes.fontClassic}>
-                            You can contact me using this form or the details bellow
+                            You can contact me using this form or the details bellow:
                             </p>
                     </Grid>
                     <Grid item xs={12} sm={8}>
