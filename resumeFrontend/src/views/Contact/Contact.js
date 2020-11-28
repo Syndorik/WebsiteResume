@@ -4,7 +4,6 @@ import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Header from "components/Header/Header.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -163,7 +162,6 @@ export default function ProfilePage(props) {
             <Header
                 color="transparent"
                 brand="Material Kit React"
-                rightLinks={<HeaderLinks />}
                 fixed
                 changeColorOnScroll={{
                     height: 140,
