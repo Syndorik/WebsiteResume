@@ -35,7 +35,7 @@ kind: Service
 metadata:
   name: frontend-svc
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - port: 80
     targetPort: 3000
