@@ -2,12 +2,15 @@ name: Build and Publish Docker image
 on:
   push:
     branches: main
-    paths-ignore: .github/**
+    paths-ignore: 
+    - .github/**
+    - deployment-frontend.yml
+    - deployment-ingress.yml
     
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Log level'     
+        description: 'Log level'
         required: true
         default: 'warning'
       tags:
