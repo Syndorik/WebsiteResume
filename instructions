@@ -9,8 +9,19 @@ kubectl create serviceaccount --namespace kube-system tiller
 kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 helm init --service-account tiller
 
+helm del --purge nginx-ingress 
 helm install --name nginx-ingress stable/nginx-ingress --set rbac.create=true --set controller.publishService.enabled=true
-helm install --name nginx-ingress stable/nginx-ingress --set rbac.create=true --set controller.publishService.enabled=true --set controller.service.type=NodePort
+
+rm static address https://console.cloud.google.com/networking/addresses/list?project=alexandre-allani-projects
+change dns to loadbalancer's IP add https://console.cloud.google.com/net-services/dns/zones/alexandre-zone/details?authuser=0&project=alexandre-allani-projects
+
+#internal IP cluster
+https://console.cloud.google.com/networking/firewalls/details/website?project=alexandre-allani-projects&authuser=0
+kubectl get node -o wide
+
+#Change static IP
+https://console.cloud.google.com/networking/addresses/list?authuser=0&project=alexandre-allani-projects
+
 
 # Get nodes usage
 kubectl describe nodes
