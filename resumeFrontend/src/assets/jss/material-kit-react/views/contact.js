@@ -11,6 +11,9 @@ const profilePageStyle = {
         margin: '0 auto',
         padding: window.innerWidth >= settings.mobile ? "0px 30px 0px 30px" : "0px 10px 0px 10px",
         width: "100% !important",
+        "& .MuiGrid-item": {
+            padding: "12px"
+        }
     },
     profile: {
         padding: "0px 20px 0px 0px",

@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgIcon } from "@material-ui/core";
+import { SvgIcon } from "@mui/material";
 import { ReactComponent as CLogo } from "assets/icons/c.svg"
 
 

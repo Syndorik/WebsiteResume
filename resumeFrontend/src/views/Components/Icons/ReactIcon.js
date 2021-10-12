@@ -1,6 +1,6 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { SvgIcon } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
+import { SvgIcon } from "@mui/material";
 import { ReactComponent as ReactLogo } from "assets/icons/react.svg"
 import styles from "assets/jss/material-kit-react/components/ReactIcon.js";
 

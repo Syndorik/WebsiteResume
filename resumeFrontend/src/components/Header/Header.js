@@ -1,30 +1,28 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-// nodejs library that concatenates classes
-import classNames from "classnames";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+//@mui/material components
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 import routes from "routes.js"
 // core components
 import styles from "assets/jss/material-kit-react/components/headerStyle.js";
 import Cookies from 'universal-cookie';
 import settings from 'conf/config.js'
+import styled from '@emotion/styled'
 
 const cookies = new Cookies();
 
-const useStyles = makeStyles(styles);
 
 export default function Header(props) {
-    const classes = useStyles();
+    const { color, fixed, absolute } = props;
     const [scrolled, setScrolled] = React.useState(false);
+    const [barcolor, setbarcolor] = React.useState(color);
     React.useEffect(() => {
         if (props.changeColorOnScroll) {
             window.addEventListener("scroll", headerColorChange);
@@ -43,45 +41,34 @@ export default function Header(props) {
         const windowsScrollTop = window.pageYOffset;
         if (windowsScrollTop > parseInt(0.07 * window.innerHeight)) {
             setScrolled(true)
-            document.body
-                .getElementsByTagName("header")[0]
-                .classList.remove(classes[color]);
-            document.body
-                .getElementsByTagName("header")[0]
-                .classList.add(classes[changeColorOnScroll.color]);
+            setbarcolor("white")
+
         } else {
             setScrolled(false)
-            document.body
-                .getElementsByTagName("header")[0]
-                .classList.add(classes[color]);
-            document.body
-                .getElementsByTagName("header")[0]
-                .classList.remove(classes[changeColorOnScroll.color]);
+            setbarcolor("transparent")
         }
     };
-    const { color, fixed, absolute } = props;
-    const appBarClasses = classNames({
-        [classes.appBar]: true,
-        [classes[color]]: color,
-        [classes.absolute]: absolute,
-        [classes.fixed]: fixed
-    });
+    const fixedStyle = fixed ? styles.fixed : {}
+    const absoluteStyle = absolute ? styles.absolute : {}
+    const appBarClasses = { ...styles.appBar, ...styles[barcolor], ...fixedStyle, ...absoluteStyle }
     var hbutton = (path, title) => {
         var stle;
 
         if (cookies.get("nav") !== path) {
-            stle = scrolled ? classes.linkcolorScrolled : classes.linkcolor
+            stle = scrolled ? styles.linkcolorScrolled : styles.linkcolor
         } else {
-            stle = scrolled ? classes.selectedLinkcolorScrolled : classes.selectedLinkColor
+            stle = scrolled ? styles.selectedLinkcolorScrolled : styles.selectedLinkColor
         }
+
+        const NavlinkAdapted = styled(NavLink)({
+            ...stle
+        })
         return <Button key={path}>
-            <NavLink
+            <NavlinkAdapted
                 strict to={path}
-                className={stle}
-                activeClassName={stle}
             >
                 {title}
-            </NavLink>
+            </NavlinkAdapted>
         </Button>
     }
 
@@ -89,20 +76,20 @@ export default function Header(props) {
         let stle;
 
         if (cookies.get("nav") !== path) {
-            stle = classes.linkcolorScrolled
+            stle = styles.linkcolorScrolled
         } else {
-            stle = classes.selectedLinkcolorScrolled
+            stle = styles.selectedLinkcolorScrolled
         }
-
+        const NavlinkAdapted = styled(NavLink)({
+            ...stle
+        })
         return <MenuItem key={path}>
             <Button>
-                <NavLink
+                <NavlinkAdapted
                     strict to={path}
-                    className={stle}
-                    activeClassName={stle}
                 >
                     {title}
-                </NavLink>
+                </NavlinkAdapted>
             </Button>
         </MenuItem>
 
@@ -121,7 +108,7 @@ export default function Header(props) {
         const handleClose = () => {
             setAnchorEl(null);
         };
-        let resumeClass = scrolled ? classes.linkcolorScrolled : classes.linkcolor
+        let resumeClass = scrolled ? styles.linkcolorScrolled : styles.linkcolor
 
 
 
@@ -129,7 +116,7 @@ export default function Header(props) {
             if (route.insideDrawer) {
                 mtitle.push(route)
                 if (cookies.get("nav") === route.path) {
-                    resumeClass = scrolled ? classes.selectedLinkcolorScrolled : classes.selectedLinkColor
+                    resumeClass = scrolled ? styles.selectedLinkcolorScrolled : styles.selectedLinkColor
                 }
             } else {
                 titles.push(route)
@@ -139,7 +126,7 @@ export default function Header(props) {
         }
 
         let menuResume = <div key={"resume"}>
-            <Button className={resumeClass} onClick={handleClick}>
+            <Button sx={resumeClass} onClick={handleClick}>
                 Resume
             </Button>
             <Menu
@@ -175,8 +162,8 @@ export default function Header(props) {
     })
 
     return (
-        <AppBar className={appBarClasses}>
-            <Toolbar className={classes.container}>
+        <AppBar sx={appBarClasses}>
+            <Toolbar sx={styles.container}>
                 {window.innerWidth >= settings.mobile ? bigScreen : Alternative}
             </Toolbar>
         </AppBar>

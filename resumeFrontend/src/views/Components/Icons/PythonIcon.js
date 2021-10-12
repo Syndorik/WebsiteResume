@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgIcon } from "@material-ui/core";
+import { SvgIcon } from "@mui/material";
 import { ReactComponent as PythonLogo } from "assets/icons/python.svg"
 
 export default function PythonIcon() {

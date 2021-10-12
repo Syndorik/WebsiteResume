@@ -1,36 +1,36 @@
 import React from "react";
 // nodejs library that concatenates classes
 import { Link } from "react-router-dom"
-import classNames from "classnames";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+// @mui/material/ components
 import Header from "components/Header/Header.js";
 import Parallax from "components/Parallax/Parallax.js";
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 import ReactCardFlip from 'react-card-flip';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+
+import profileP from "assets/img/profile-bg.jpg"
 
 import ReactPlayer from 'react-player'
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 
 
-import Grow from '@material-ui/core/Grow';
+import Grow from '@mui/material/Grow';
 
-import GitHubIcon from '@material-ui/icons/GitHub';
-import AddIcon from '@material-ui/icons/Add';
-import CodeIcon from '@material-ui/icons/Code';
-import RemoveIcon from '@material-ui/icons/Remove';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import GetAppRoundedIcon from '@material-ui/icons/GetAppRounded';
-import IconButton from '@material-ui/core/IconButton';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-import NotInterestedIcon from '@material-ui/icons/NotInterested';
-import WorkIcon from '@material-ui/icons/Work';
-import SchoolIcon from '@material-ui/icons/School';
-import StarIcon from '@material-ui/icons/Star';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import AddIcon from '@mui/icons-material/Add';
+import CodeIcon from '@mui/icons-material/Code';
+import RemoveIcon from '@mui/icons-material/Remove';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import GetAppRoundedIcon from '@mui/icons-material/GetAppRounded';
+import IconButton from '@mui/material/IconButton';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import NotInterestedIcon from '@mui/icons-material/NotInterested';
+import WorkIcon from '@mui/icons-material/Work';
+import SchoolIcon from '@mui/icons-material/School';
+import StarIcon from '@mui/icons-material/Star';
 
 import TorchIcon from "views/Components/Icons/TorchIcon.js"
 import CIcon from "views/Components/Icons/CIcon.js"
@@ -39,16 +39,72 @@ import AndroidIcon from "views/Components/Icons/AndroidIcon.js"
 import DockerIcon from "views/Components/Icons/DockerIcon.js"
 import PythonIcon from "views/Components/Icons/PythonIcon.js"
 import ReactIcon from "views/Components/Icons/ReactIcon.js"
+import { styled } from '@mui/material/styles';
+import { css, ClassNames } from '@emotion/react'
+
 
 import styles from "assets/jss/material-kit-react/views/project.js";
 import video from "assets/videos/fight.mp4"
 import settings from 'conf/config.js'
 
-const useStyles = makeStyles(styles);
 
+const StyledA = styled("a")({
+    ...styles.linkcolorScrolled
+})
+
+const StyledLink = styled(Link)({
+    ...styles.linkcolorScrolled
+})
+
+const StyledH1 = styled("h1")({
+    ...styles.profile, ...styles.sideTitle, ...styles.addMarginh1
+})
+const StyledSmallH1 = styled("h1")({
+    ...styles.profile, ...styles.smallTitle
+})
+
+const BoldSpan = styled("span")({
+    ...styles.opensansbold
+})
+const MaskedSpan = styled("span")({
+    ...styles.showmaskText
+})
+
+const FontDivStyled = styled("div")({
+    ...styles.font
+})
+
+const FontDivStyledClassic = styled("div")({
+    ...styles.fontClassic
+})
+
+const StyledProjectH1 = styled("h1")({
+    ...styles.profile, ...styles.sideTitle, ...styles.addMarginh1
+})
+
+const PargraphFontClassic = styled("p")({
+    ...styles.fontClassicParagraph
+})
+
+const BoldSpanParagraph = styled("span")({
+    ...styles.opensanssemiboldparagraph
+})
+
+const MainDiv = styled('div')({ ...styles.main, ...styles.mainRaised })
+
+const UlStyled = styled("ul")({
+    ...styles.ul
+})
+
+const OlStyled = styled("ol")({
+    ...styles.ul
+})
+
+const VerticalTimelineStyled = styled(VerticalTimeline)({
+    ...styles.verticalTimeline
+})
 
 export default function ProfilePage(props) {
-    const classes = useStyles();
     const { ...rest } = props;
 
     const [widthIcon, setWidthIcon] = React.useState(0)
@@ -65,17 +121,17 @@ export default function ProfilePage(props) {
     })
 
     const LinkProject = (urlProject) => {
-        return <IconButton>
-            <a rel="noopener noreferrer" className={classes.linkcolorScrolled} href={urlProject} target="_blank">
+        return <IconButton sx={{ padding: "12px" }}>
+            <StyledA rel="noopener noreferrer" href={urlProject} target="_blank">
                 <GitHubIcon fontSize="large" />
-            </a>
+            </StyledA>
         </IconButton >
     }
 
     const LinkReport = (fileName) => {
-        return <Link to={"/files/".concat(fileName)} className={classes.linkcolorScrolled} target="_blank" download>
-            <IconButton><GetAppRoundedIcon fontSize="large" /> </IconButton>
-        </Link>
+        return <StyledLink to={"/files/".concat(fileName)} target="_blank" download>
+            <IconButton sx={{ padding: "12px" }}><GetAppRoundedIcon fontSize="large" /> </IconButton>
+        </StyledLink>
     }
 
     const FlippedCard = (name, description, urlProject, fileName, addContent) => {
@@ -106,23 +162,23 @@ export default function ProfilePage(props) {
 
         return <Grid item xs={gridSize}>
             <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" containerStyle={{ height: "100%", alignItems: "center" }}>
-                <Card className={classNames(classes.cardStyle, classes.buttonHovered)} variant="outlined" onClick={handleChange} style={{ height: "100%" }}>
+                <Card sx={{ ...styles.cardStyle, ...styles.buttonHovered }} variant="outlined" onClick={handleChange} style={{ height: "100%" }}>
                     <CardContent>
-                        <h1 style={{ textAlign: "center" }} className={classNames(classes.profile, classes.sideTitle, classes.addMarginh1)}>
+                        <StyledH1 style={{ textAlign: "center" }}>
                             {name}
-                        </h1>
+                        </StyledH1>
                     </CardContent>
                 </Card>
-                <Card className={classes.cardStyle} variant="outlined" style={{ height: "100%" }}>
+                <Card sx={styles.cardStyle} variant="outlined" style={{ height: "100%" }}>
                     <CardContent>
-                        <Grid container justify="center">
+                        <Grid container justify="center" sx={styles.flippedContainer}>
                             <Grid item xs={2}>
-                                <IconButton onClick={handleChange}> <ArrowBackIcon /> </IconButton>
+                                <IconButton onClick={handleChange} sx={{ padding: "12px" }}> <ArrowBackIcon /> </IconButton>
                             </Grid>
                             <Grid item xs={10} align="left" style={{ padding: "12px 0px" }}>
-                                <h1 className={classNames(classes.profile, classes.smallTitle)}>
+                                <StyledSmallH1>
                                     {name}
-                                </h1>
+                                </StyledSmallH1>
                                 {description}
                             </Grid>
                             {addContent !== undefined ?
@@ -133,7 +189,7 @@ export default function ProfilePage(props) {
                     </CardContent>
 
                     <CardActions>
-                        <Grid container justify="flex-end">
+                        <Grid container justify="flex-end" sx={styles.flippedCardAction}>
                             <Grid item xs={12} style={{ textAlign: "right" }}>
                                 {linkFile}
                                 {linkProjectComp}
@@ -149,11 +205,11 @@ export default function ProfilePage(props) {
 
 
     const alignedIcons = (icon, text) => {
-        return <div className={classes.font}>
-            <Grid container direction="row" alignItems="baseline" spacing={2}>
+        return <FontDivStyled>
+            <Grid container direction="row" alignItems="baseline" spacing={2} sx={{ "margin": "-8px" }}>
                 <span ref={ref} style={{ marginRight: "10px" }}>{icon} </span> <span> {text}</span>
             </Grid>
-        </div>
+        </FontDivStyled>
     }
 
     const GrowComp = (nameShow, toShow, msgShow, msgMask) => {
@@ -165,60 +221,96 @@ export default function ProfilePage(props) {
 
         return <span>
             {checkedAbstract ?
-                <span className={classes.opensansbold}>
-                    <IconButton className={classes.iconbutton} edge='start' onClick={handleChange}>
+                <BoldSpan>
+                    <IconButton sx={styles.iconbutton} edge='start' onClick={handleChange}>
                         <RemoveIcon />
                     </IconButton>
                     {nameShow} {msgShow}<br />
-                </span> :
-                <span className={classes.opensansbold}>
-                    <IconButton className={classes.iconbutton} edge='start' onClick={handleChange}>
+                </BoldSpan> :
+                <BoldSpan>
+                    <IconButton sx={styles.iconbutton} edge='start' onClick={handleChange}>
                         <AddIcon />
                     </IconButton>
                     {nameShow} {msgMask}<br />
-                </span>
+                </BoldSpan>
             }
             <span>
                 <Grow in={checkedAbstract} mountOnEnter unmountOnExit>
-                    <span className={classes.showmaskText}> {toShow}</span>
+                    <MaskedSpan> {toShow}</MaskedSpan>
                 </Grow>
             </span>
         </span>
     }
 
+    const H3Timeline = (props) => {
+        return (
+            <ClassNames>
+                {({ css, cx }) => {
+                    const clsh3 = css(styles.timelineh3)
+                    return <h3 className={cx("vertical-timeline-element-title", css(clsh3))}> {props.name}</h3>
+                }}
+            </ClassNames >
+        );
+    };
+
+    const H4Timeline = (props) => {
+        return (
+            <ClassNames>
+                {({ css, cx }) => {
+                    const clsh4 = css(styles.timelineh4)
+                    return <h4 className={cx("vertical-timeline-element-subtitle", css(clsh4))}> {props.where}</h4>
+                }}
+            </ClassNames >
+        );
+    };
+
+    const dateCSS = css(styles.date)
+    const iconCSS = css(styles.iconChange)
+
+
     const Project = (name, where, date, icon, description, white) => {
         var color = white !== undefined ? "#fff" : '#11ABB0';
-        return <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            contentStyle={{ background: '#11ABB0', color: '#fff' }}
-            contentArrowStyle={{ borderRight: '7px solid  #11ABB0' }}
-            date={date}
-            dateClassName={classes.date}
-            iconClassName={classes.iconChange}
-            iconStyle={{ background: color, color: '#fff', boxShadow: "0 0 0 4px #4f999b" }}
-            icon={icon}
-        >
-            <h3 className={classNames("vertical-timeline-element-title", classes.timelineh3)}>{name}</h3>
-            <h4 className={classNames("vertical-timeline-element-subtitle", classes.timelineh4)}>{where}</h4>
-            {description}
-        </VerticalTimelineElement>
+        return (
+            <ClassNames>
+                {({ css, cx }) => {
+                    return <VerticalTimelineElement
+                        className="vertical-timeline-element--work"
+                        contentStyle={{ background: '#11ABB0', color: '#fff' }}
+                        contentArrowStyle={{ borderRight: '7px solid  #11ABB0' }}
+                        date={date}
+                        dateClassName={cx(css(dateCSS))}
+                        iconClassName={cx(css(iconCSS))}
+                        iconStyle={{ background: color, color: '#fff', boxShadow: "0 0 0 4px #4f999b" }}
+                        icon={icon}
+                    >
+                        <H3Timeline name={name} />
+                        <H4Timeline where={where} />
+                        {description}
+                    </VerticalTimelineElement>
+                }}
+            </ClassNames>)
     }
 
     const StartWork = (name, where, date, icon, description) => {
-        return <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            contentStyle={{ background: '#FF6961', color: '#fff' }}
-            contentArrowStyle={{ borderRight: '7px solid  #FF6961' }}
-            date={date}
-            dateClassName={classes.date}
-            iconClassName={classes.iconChange}
-            iconStyle={{ background: '#FF6961', color: '#fff', boxShadow: "0 0 0 4px #cb7772" }}
-            icon={icon}
-        >
-            <h3 className={classNames("vertical-timeline-element-title", classes.timelineh3)}>{name}</h3>
-            <h4 className={classNames("vertical-timeline-element-subtitle", classes.timelineh4)}>{where}</h4>
-            {description}
-        </VerticalTimelineElement>
+        return (
+            <ClassNames>
+                {({ css, cx }) => {
+                    return <VerticalTimelineElement
+                        className="vertical-timeline-element--work"
+                        contentStyle={{ background: '#FF6961', color: '#fff' }}
+                        contentArrowStyle={{ borderRight: '7px solid  #FF6961' }}
+                        date={date}
+                        dateClassName={cx(css(dateCSS))}
+                        iconClassName={cx(css(iconCSS))}
+                        iconStyle={{ background: '#FF6961', color: '#fff', boxShadow: "0 0 0 4px #cb7772" }}
+                        icon={icon}
+                    >
+                        <H3Timeline name={name} />
+                        <H4Timeline where={where} />
+                        {description}
+                    </VerticalTimelineElement>
+                }}
+            </ClassNames>)
     }
 
 
@@ -234,33 +326,33 @@ export default function ProfilePage(props) {
                 }}
                 {...rest}
             />
-            <Parallax small filter image={require("assets/img/profile-bg.jpg")} />
-            <div className={classNames(classes.main, classes.mainRaised)}>
-                <Grid container justify="flex-start" className={classes.containbig} direction="row" spacing={3}>
-                    <Grid item xs={12}>
+            <Parallax small filter image={profileP} />
+            <MainDiv>
+                <Grid container justify="flex-start" sx={styles.containbig} direction="row" spacing={3}>
+                    <Grid item xs={12} >
                         {alignedIcons(
-                            <StarBorderIcon className={classes.icon} style={{ "margin": "0px 4px 0px 16px" }} />,
-                            <h1 className={classNames(classes.profile, classes.sideTitle, classes.addMarginh1)}><span>Starred Projects</span></h1>
+                            <StarBorderIcon sx={styles.icon} style={{ "margin": "0px 4px 0px 16px" }} />,
+                            <StyledProjectH1><span>Starred Projects</span></StyledProjectH1>
                         )}
                     </Grid>
                     <Grid item xs={12}>
-                        <p className={classes.fontClassicParagraph}
+                        <PargraphFontClassic
                             style={window.innerWidth >= settings.mobile ? { paddingLeft: widthIcon } : {}}>
                             These two side-projects were selected because they are the most representative of my skills. This section does not include
                             my master thesis nor work project as they are described in the Background page.
-                            <span className={classes.opensanssemiboldparagraph}> You can find the source-code of each
-                            project by clicking on the Github icon.
-                            When available, you can download the report of a project by clicking on the download icon. </span>
+                            <BoldSpanParagraph > You can find the source-code of each
+                                project by clicking on the Github icon.
+                                When available, you can download the report of a project by clicking on the download icon. </BoldSpanParagraph>
                             If a "cancel" icon appears, this means that the source code is not available.
-                        </p>
+                        </PargraphFontClassic>
                     </Grid>
                 </Grid>
-                <Grid container justify="center" align="center" alignItems="stretch" className={classes.containbig} direction="row" spacing={3}
+                <Grid container justify="center" align="center" alignItems="stretch" sx={styles.containbig} direction="row" spacing={3}
                     style={window.innerWidth >= settings.mobile ? { paddingLeft: (parseInt(lpad) + widthIcon) + "px" } : {}}>
 
                     {FlippedCard(
                         "Age regression using MRI brain scans",
-                        <div className={classes.fontClassic} style={{ paddingRight: "4px" }}>
+                        <FontDivStyledClassic style={{ paddingRight: "4px" }}>
                             <p style={{ marginTop: "20px", marginBottom: "0px" }}>
                                 Volume based regression:</p>
                             <p style={{ paddingLeft: "20px" }}>
@@ -273,7 +365,7 @@ export default function ProfilePage(props) {
                                 Another part of the project was to directly use a Unet architecture with residuals to predict
                                 the age of the patient.
                             </p>
-                        </div>,
+                        </FontDivStyledClassic>,
                         "https://github.com/Syndorik/Resume/tree/master/imperial/machine_learning_for_imaging",
                         "report_mli.pdf"
 
@@ -281,23 +373,23 @@ export default function ProfilePage(props) {
                     }
                     {FlippedCard(
                         "Pokemon-game using Ethereum blockchain",
-                        <div className={classes.fontClassic} style={{ paddingRight: "4px" }}>
+                        <FontDivStyledClassic style={{ paddingRight: "4px" }}>
                             <p style={{ marginBottom: "1px" }}>
                                 The project was about creating a Pokemon-like game where each action/state was stored on an Ethereum-like blockchain.
                             </p>
                             {GrowComp(
-                                "The game have the following specificities",
-                                <ul className={classes.ul}>
+                                "The game has the following specificities",
+                                <UlStyled>
                                     <li>Each Pokemon is uniquely identified.</li>
                                     <li>Users can sell Pokemons to another user according to a price.</li>
                                     <li>Users can sell a Pokemon in the market.</li>
                                     <li>Fighting mechanism. Each Pokemon have the following characteristics: Species, Health Points, Attack Points,
-                                    Defense Points, level, and type. The fighting is based on pseudo randomness and the previous statistics.
-                                    If a Pokemon wins a fight, he wins XP points. With enough XP points, the Pokemon can level up which makes
-                                    him stronger in general.</li>
+                                        Defense Points, level, and type. The fighting is based on pseudo randomness and the previous statistics.
+                                        If a Pokemon wins a fight, he wins XP points. With enough XP points, the Pokemon can level up which makes
+                                        him stronger in general.</li>
                                     <li>Breeding mechanism.</li>
                                     <li>Users can trade Pokemons between them.</li>
-                                </ul>,
+                                </UlStyled>,
                                 "(click to mask)",
                                 "(click to show)",
                             )}
@@ -311,7 +403,7 @@ export default function ProfilePage(props) {
                                 The different security issues are dealt with in the related reports, especially the randomness.
 
                             </p>
-                        </div>,
+                        </FontDivStyledClassic>,
                         "https://github.com/Syndorik/Resume/tree/master/imperial/distributed_ledgers",
                         "report_pdl.pdf",
                         GrowComp("Video",
@@ -321,22 +413,22 @@ export default function ProfilePage(props) {
 
                     )}
                 </Grid>
-                <Grid container justify="flex-start" className={classes.containbig} direction="row" spacing={3}>
+                <Grid container justify="flex-start" sx={styles.containbig} direction="row" spacing={3}>
                     <Grid item xs={12}>
 
                         {alignedIcons(
-                            <CodeIcon className={classes.icon} style={{ "margin": "0px 4px 0px 16px" }} />,
-                            <h1 className={classNames(classes.profile, classes.sideTitle, classes.addMarginh1)}><span>Project Timeline</span></h1>
+                            <CodeIcon sx={styles.icon} style={{ "margin": "0px 4px 0px 16px" }} />,
+                            <StyledProjectH1><span>Project Timeline</span></StyledProjectH1>
                         )}
                     </Grid>
                     <Grid item xs={12}>
-                        <p className={classes.fontClassicParagraph}
+                        <PargraphFontClassic
                             style={window.innerWidth >= settings.mobile ? { paddingLeft: widthIcon } : {}}>
                             This timeline shows the projects I have worked on as well as my academic and professional background.
-                        </p>
+                        </PargraphFontClassic>
                     </Grid>
                     <Grid item xs={12}>
-                        <VerticalTimeline className={classes.verticalTimeline}>
+                        <VerticalTimelineStyled>
                             {StartWork(
                                 "Master Thesis at Imperial College of London",
                                 "London, UK",
@@ -351,8 +443,8 @@ export default function ProfilePage(props) {
                                 "Imperial College of London",
                                 "January 2020 - March 2020",
                                 <TorchIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Deep learning courseworks including works on CNNs, GANs and RNNs
                                         </p>
@@ -394,8 +486,8 @@ export default function ProfilePage(props) {
                                 "Imperial College of London",
                                 "January 2020 - March 2020",
                                 <TorchIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Age regression using MRI brain scans
                                         </p>
@@ -403,10 +495,10 @@ export default function ProfilePage(props) {
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
                                                     Volume based regression:<br />
-                                                The purpose of this task was to first predict the volume of some areas in the brain using 3D MRI scans.
-                                                A Unet architecture with residuals was used to do this. Then using a regression model, we could use the
-                                                volume to predict the age of a patient. Neural Network, SVMs, Linear Regression and xgboost methods were
-                                                used for this second task.
+                                                    The purpose of this task was to first predict the volume of some areas in the brain using 3D MRI scans.
+                                                    A Unet architecture with residuals was used to do this. Then using a regression model, we could use the
+                                                    volume to predict the age of a patient. Neural Network, SVMs, Linear Regression and xgboost methods were
+                                                    used for this second task.
                                                 </p>
                                                 <p>
                                                     Another part of this project was to directly use a Unet architecture with residuals to
@@ -433,8 +525,8 @@ export default function ProfilePage(props) {
                                 "Imperial College of London",
                                 "January 2020 - March 2020",
                                 <TorchIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Quality Prediction of a machine translation
                                         </p>
@@ -442,11 +534,11 @@ export default function ProfilePage(props) {
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
                                                     In this project, we were given a dataset containing the following:
-                                                    <ul className={classes.ul}>
+                                                    <UlStyled>
                                                         <li>Source sentence in English,</li>
                                                         <li>Machine Translation of the source sentence,</li>
                                                         <li>Quality of the translation evaluated by several peers. The z-score of the different evaluations is returned.</li>
-                                                    </ul>
+                                                    </UlStyled>
                                                 </p>
                                                 <p>
                                                     The purpose of the project was to predict the quality of a machine translation. To do so, we used a BERT model fine-tuned with the objective of this project. Another method using bi-LSTM was used, however returning worse results.
@@ -472,8 +564,8 @@ export default function ProfilePage(props) {
                                 "Imperial College of London",
                                 "January 2020 - March 2020",
                                 <ReactIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Pokemon-like game using Ethereum blockchain
                                         </p>
@@ -481,14 +573,14 @@ export default function ProfilePage(props) {
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
                                                     The project was about creating a Pokemon-like game where each action/state was stored on an Ethereum-like blockchain. The game have the following specificities:
-                                                    <ul className={classes.ul}>
+                                                    <UlStyled>
                                                         <li>Each Pokemon is uniquely identified.</li>
                                                         <li>Users can sell Pokemons to another user according to a price.</li>
                                                         <li>Users can sell a Pokemon in the market.</li>
                                                         <li>Fighting mechanism. Each Pokemon have the following characteristics: Species, Health Points, Attack Points, Defense Points, level, and type. The fighting is based on pseudo randomness and the previous statistics. If a Pokemon wins a fight, he wins XP points. With enough XP points, the Pokemon can level up which makes him stronger in general.</li>
                                                         <li>Breeding mechanism.</li>
                                                         <li>Users can trade Pokemons between them.</li>
-                                                    </ul>
+                                                    </UlStyled>
                                                 </p>
                                                 <p>
                                                     The "backend" part of the game is done with Solidity contracts over the blockchain. The "frontend" part is done in ReactJS. Videos showing the results along the source code are available on my github.
@@ -516,8 +608,8 @@ export default function ProfilePage(props) {
                                 "Imperial College of London",
                                 " November 2019 -  December 2019",
                                 <TorchIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Deep-Q learning for maze traversal
                                         </p>
@@ -525,12 +617,12 @@ export default function ProfilePage(props) {
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
                                                     Using PyTorch, I developed a deepQ learning Neural Network with some optimization to make an agent learn the best path to take to go from point A to point B. <br />
-                                                The constraints were:
-                                                    <ul className={classes.ul}>
+                                                    The constraints were:
+                                                    <UlStyled>
                                                         <li>10 minutes of training</li>
                                                         <li>Using only scalable methods</li>
                                                         <li>No use of Gradient Policies</li>
-                                                    </ul>
+                                                    </UlStyled>
                                                 </p>
                                                 <p>
                                                     My agent was able to solve easy to medium-difficult mazes.
@@ -557,20 +649,20 @@ export default function ProfilePage(props) {
                                 "Imperial College of London",
                                 " November 2019 -  December 2019",
                                 <PythonIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Development of Neural Network framework
-                                            </p>
+                                        </p>
                                         {GrowComp("",
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
                                                     In this group project, I developed a Neural Network Framework. It includes:
-                                                    <ul className={classes.ul}>
+                                                    <UlStyled>
                                                         <li>Linear layer,</li>
                                                         <li>Activation functions layer (sigmoid...),</li>
                                                         <li>Evaluation layers (Binary Cross entropy...).</li>
-                                                    </ul>
+                                                    </UlStyled>
                                                 </p>
                                                 <p>
                                                     Then we used TensorFlow to solve a classification task in insurance pricing.
@@ -599,8 +691,8 @@ export default function ProfilePage(props) {
                                 "Imperial College of London",
                                 "October 2019 - December 2019",
                                 <PythonIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Recoded and evaluated several algorithms in statistical prediction and dimensionality reduction
                                         </p>
@@ -608,13 +700,13 @@ export default function ProfilePage(props) {
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
                                                     The algorithm implemented were:
-                                                    <ul className={classes.ul}>
+                                                    <UlStyled>
                                                         <li>Linear Model algorithm,</li>
                                                         <li>Bayesian Model algorithm,</li>
                                                         <li>LDA,</li>
                                                         <li>PCA, KPCA,</li>
                                                         <li>SVM.</li>
-                                                    </ul>
+                                                    </UlStyled>
                                                 </p>
                                             </div>,
                                             "Mask content",
@@ -636,8 +728,8 @@ export default function ProfilePage(props) {
                                 "Imperial College of London",
                                 "October 2019 - November 2019",
                                 <PythonIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Markov Decision Process in a Grid World
                                         </p>
@@ -669,8 +761,8 @@ export default function ProfilePage(props) {
                                 "Imperial College of London",
                                 "October 2019 - November 2019",
                                 <PythonIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Development of a Decision Tree framework
                                         </p>
@@ -678,13 +770,13 @@ export default function ProfilePage(props) {
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
                                                     In this group project, I developed a Decision Tree framework in Python. This framework includes:
-                                                    <ul className={classes.ul}>
+                                                    <UlStyled>
                                                         <li>Single-threaded decision tree,</li>
                                                         <li>Parallelized version of a decision,</li>
                                                         <li>Testing methods (Cross-Validation, confusion Matrix...),</li>
                                                         <li>Pruning of decision tree,</li>
                                                         <li>Graphic representation of a decision tree,</li>
-                                                    </ul>
+                                                    </UlStyled>
                                                 </p>
                                                 <p>
                                                     The framework was tested on a real-life problem: to predict the localisation of a person in a flat, based on the strength of each wifi access points.
@@ -724,8 +816,8 @@ export default function ProfilePage(props) {
                                 "Sia Partners",
                                 "May 2019 -  October 2019",
                                 <WorkIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Participated in the creation of the new cloud computing-based deployment system. Check out the background page for more information.
                                         </p>
@@ -739,8 +831,8 @@ export default function ProfilePage(props) {
                                 "Sia Partners",
                                 "March 2019 -  May 2019",
                                 <WorkIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Coded a recommendation Engine from scratch. The company was a fashion-based start-up. Check out the background page for more information.
                                         </p>
@@ -765,8 +857,8 @@ export default function ProfilePage(props) {
                                 "Télécom Bretagne",
                                 "October 2018 - March 2019 ",
                                 <PythonIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             In this challenge, I had a dataset containing all the sales throughout a year and a half of two service stations. We built and implemented a Machine Learning model in order to predict the number of products sold in a service station for a given date.
                                         </p>
@@ -782,8 +874,8 @@ export default function ProfilePage(props) {
                                 "Télécom Bretagne",
                                 "October 2018 - November 2018",
                                 <PythonIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Prediction of final placement in a game of PUBG
                                         </p>
@@ -820,8 +912,8 @@ export default function ProfilePage(props) {
                                 "Télécom Bretagne",
                                 "October 2018 - November 2018 ",
                                 <PythonIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Statistics on film culture realised on people from Brest and its area
                                         </p>
@@ -861,8 +953,8 @@ export default function ProfilePage(props) {
                                 "KAIST",
                                 "March 2018 - June 2018  ",
                                 <AndroidIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Created an application running the same music on multiple smartphones through Bluetooth with strobe light on sync with the rythm
                                         </p>
@@ -892,8 +984,8 @@ export default function ProfilePage(props) {
                                 "KAIST",
                                 "March 2018 - June 2018",
                                 <AndroidIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Created a TimeTable Application designed for KAIST students
                                         </p>
@@ -923,8 +1015,8 @@ export default function ProfilePage(props) {
                                 "KAIST",
                                 "March 2018 - June 2018",
                                 <CIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Multiple courseworks in System Programming including basic understanding of memory allocation
                                         </p>
@@ -932,7 +1024,7 @@ export default function ProfilePage(props) {
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
                                                     List of labs:
-                                                    <ol className={classes.ul}>
+                                                    <OlStyled>
                                                         <li>Implementation of different functions with some limitation. Most functions had to be coded with bitwise operators. (C)</li>
                                                         <li>Defusing a binary bomb by reading Assembly code of the object file. (Assembly / GDB)</li>
                                                         <li>Attacking a program with the buffer-overflow attack. I first had to do a simple buffer overflow attack. Then it was more working around protections that exist to protect an application from such attacks. (Assembly / GDB)</li>
@@ -940,7 +1032,7 @@ export default function ProfilePage(props) {
                                                         <li>This lab was mostly dealing with signals and processes. I had to create almost from scratch a very light version of a linux shell. (C/GDB)</li>
                                                         <li>In this lab I had to write from scratch the functions malloc, realloc and free. I used segregated free list to achieve that. (C/GDB)</li>
                                                         <li>In this lab I had to write (almost) from scratch a server proxy. The main purpose of this lab was to work with Threads and Semaphores.</li>
-                                                    </ol>
+                                                    </OlStyled>
                                                 </p>
                                             </div>,
                                             "Mask content",
@@ -963,8 +1055,8 @@ export default function ProfilePage(props) {
                                 "KAISTs",
                                 "May 2018",
                                 <ArduinoIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Communication Smartphone-Arduino with High Frequencies wavesound
                                         </p>
@@ -995,8 +1087,8 @@ export default function ProfilePage(props) {
                                 "KAIST",
                                 "April 2018",
                                 <ArduinoIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Communication Smartphone-Arduino with blinking lights
                                         </p>
@@ -1004,7 +1096,7 @@ export default function ProfilePage(props) {
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
                                                     Implementation of a light-based protocol. According to the blinks of a LED light, the receiver (which is also on the Arduino) will decrypt the message. (Arduino / C++)
-                                                 </p>
+                                                </p>
                                             </div>,
                                             "Mask content",
                                             "Show content"
@@ -1026,8 +1118,8 @@ export default function ProfilePage(props) {
                                 "KAIST",
                                 "April 2018",
                                 <AndroidIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Implementation of a Weather Application using Wunderground APIs
                                         </p>
@@ -1035,7 +1127,7 @@ export default function ProfilePage(props) {
                                             <div>
                                                 <p style={{ marginTop: "0px" }}>
                                                     This is a "simple" weather application. Objectives of this project: learn about Threads/AsyncTask. Connect to a distant base. Use activities and widgets. (Android Studio / Java)
-                                                 </p>
+                                                </p>
                                             </div>,
                                             "Mask content",
                                             "Show content"
@@ -1067,8 +1159,8 @@ export default function ProfilePage(props) {
                                 "Télécom Bretagne",
                                 "October 2017 - December 2017",
                                 <DockerIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Deployment of a Photo sharing website
                                         </p>
@@ -1098,8 +1190,8 @@ export default function ProfilePage(props) {
                                 "Télécom Bretagne",
                                 "April 2017 - June 2017",
                                 <PythonIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Chat application using Python
                                         </p>
@@ -1129,8 +1221,8 @@ export default function ProfilePage(props) {
                                 "Télécom Bretagne",
                                 "January 2017 - June 2017",
                                 <ArduinoIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Implementation of the communication protocol for a Pixar-type lamp on an Arduino board
                                         </p>
@@ -1159,8 +1251,8 @@ export default function ProfilePage(props) {
                                 "Télécom Bretagne",
                                 "September 2016 - December 2016 ",
                                 <ArduinoIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Creation of a remote-controlled car using an Arduino Board
                                         </p>
@@ -1186,8 +1278,8 @@ export default function ProfilePage(props) {
                                 "Télécom Bretagne",
                                 "September 2016 - November 2016",
                                 <PythonIcon />,
-                                <Grid container justify="flex-end">
-                                    <Grid item xs={12} className={classes.fontClassic}>
+                                <Grid container justify="flex-end" sx={styles.projectContainer}>
+                                    <Grid item xs={12} sx={styles.fontClassic}>
                                         <p>
                                             Implementation of the best graph traversal algorithm according to a given maze.
                                         </p>
@@ -1245,10 +1337,10 @@ export default function ProfilePage(props) {
                                 iconStyle={{ background: '#77dd77', color: '#fff', boxShadow: "0 0 0 4px rgb(117 187 117)" }}
                                 icon={<StarIcon />}
                             />
-                        </VerticalTimeline>
+                        </VerticalTimelineStyled>
                     </Grid>
                 </Grid>
-            </div>
+            </MainDiv>
         </div>
     );
 }

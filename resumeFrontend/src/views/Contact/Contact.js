@@ -1,34 +1,41 @@
 import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+// @mui/material components
 import Header from "components/Header/Header.js";
 import Parallax from "components/Parallax/Parallax.js";
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
 
-import InputAdornment from '@material-ui/core/InputAdornment';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
-import SubjectIcon from '@material-ui/icons/Subject';
-import Button from '@material-ui/core/Button';
+import InputAdornment from '@mui/material/InputAdornment';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import SubjectIcon from '@mui/icons-material/Subject';
+import Button from '@mui/material/Button';
 import emailjs from 'emailjs-com';
 import styles from "assets/jss/material-kit-react/views/contact.js";
 
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 import settings from 'conf/config.js'
+import profileP from "assets/img/profile-bg.jpg"
+
+import { styled } from '@mui/material/styles';
 
 
-const useStyles = makeStyles(styles);
 
-function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
+const MainDiv = styled('div')({ ...styles.main, ...styles.mainRaised })
+const StyledH1 = styled("h1")({
+    ...styles.profile, ...styles.sideTitle, ...styles.addMarginh1
+})
+const PargraphFontClassic = styled("p")({
+    ...styles.fontClassic
+})
+
+
+function AlertPerso(props) {
+    return <Alert elevation={6} variant="filled" {...props} />;
 }
 
 export default function ProfilePage(props) {
-    const classes = useStyles();
     const { ...rest } = props;
 
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -50,6 +57,8 @@ export default function ProfilePage(props) {
     const [openError, setOpenError] = React.useState(false);
     const [openBeingSent, setOpenBeingSent] = React.useState(false);
     const [openNotworking, setOpenNotworking] = React.useState(false);
+
+    let H1StyledResp = window.innerWidth >= settings.mobile ? styled("h1")({ ...styles.profile, ...styles.sideTitleSmall, ...styles.margin }) : styled("h1")({ ...styles.profile, ...styles.sideTitle, ...styles.margin })
 
     React.useEffect(() => {
         window.scrollTo(0, 0)
@@ -157,6 +166,7 @@ export default function ProfilePage(props) {
     emailjs.init("user_aG5p436ruTKxmdgkllgm9");
 
 
+
     return (
         <div>
             <Header
@@ -169,21 +179,21 @@ export default function ProfilePage(props) {
                 }}
                 {...rest}
             />
-            <Parallax small filter image={require("assets/img/profile-bg.jpg")} />
-            <div className={classNames(classes.main, classes.mainRaised)}>
-                <Grid container justify="center" className={classes.contain} direction="row" spacing={3}>
+            <Parallax small filter image={profileP} />
+            <MainDiv>
+                <Grid container justify="center" sx={styles.contain} direction="row" spacing={3}>
                     <Grid item xs={12}>
-                        <h1 className={classNames(classes.profile, classes.sideTitle, classes.addMarginh1)}><span>Contact</span></h1>
+                        <StyledH1><span>Contact</span></StyledH1>
                     </Grid>
                     <Grid item xs={12}>
-                        <p className={classes.fontClassic}>
+                        <PargraphFontClassic>
                             You can contact me using this form or the details bellow:
-                            </p>
+                        </PargraphFontClassic>
                     </Grid>
                     <Grid item xs={12} sm={8}>
                         <div>
                             <TextField
-                                className={classes.margin}
+                                sx={styles.margin}
                                 label="Name"
                                 required
                                 variant="outlined"
@@ -192,7 +202,7 @@ export default function ProfilePage(props) {
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
-                                            <AccountCircle />
+                                            <AccountCircleIcon />
                                         </InputAdornment>
                                     ),
                                 }}
@@ -202,7 +212,7 @@ export default function ProfilePage(props) {
                         </div>
                         <div>
                             <TextField
-                                className={classes.margin}
+                                sx={styles.margin}
                                 label="Email"
                                 required
                                 variant="outlined"
@@ -221,7 +231,7 @@ export default function ProfilePage(props) {
                         </div>
                         <div>
                             <TextField
-                                className={classes.margin}
+                                sx={styles.margin}
                                 label="Subject"
                                 required
                                 variant="outlined"
@@ -240,7 +250,7 @@ export default function ProfilePage(props) {
                         </div>
                         <div>
                             <TextField
-                                className={classes.margin}
+                                sx={{ ...styles.margin }}
                                 label="Message"
                                 required
                                 variant="outlined"
@@ -254,38 +264,38 @@ export default function ProfilePage(props) {
 
                         </div>
                         <div style={{ textAlign: "end" }}>
-                            <Button variant="contained" className={classes.buttonStyle} disabled={disable} onClick={handleClick}>Send</Button>
+                            <Button variant="contained" sx={styles.buttonStyle} disabled={disable} onClick={handleClick}>Send</Button>
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <h1 className={classNames(classes.profile, window.innerWidth >= settings.mobile ? classes.sideTitleSmall : classes.sideTitle, classes.margin)}><span>My details</span></h1>
-                        <p className={classes.fontClassic}>Alexandre Allani</p>
-                        <p className={classes.fontClassic}>Paris, France</p>
-                        <p className={classes.fontClassic}>+33648080121</p>
-                        <p className={classes.fontClassic}>aa4719@ic.ac.uk</p>
+                        <H1StyledResp><span>My details</span></H1StyledResp>
+                        <PargraphFontClassic>Alexandre Allani</PargraphFontClassic>
+                        <PargraphFontClassic>Paris, France</PargraphFontClassic>
+                        <PargraphFontClassic>+33648080121</PargraphFontClassic>
+                        <PargraphFontClassic>aa4719@ic.ac.uk</PargraphFontClassic>
 
                     </Grid>
                 </Grid>
-            </div>
+            </MainDiv>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success">
+                <AlertPerso onClose={handleClose} severity="success">
                     Email sent
-                </Alert>
+                </AlertPerso>
             </Snackbar>
             <Snackbar open={openBeingSent} autoHideDuration={6000} onClose={handleCloseBeingSent}>
-                <Alert onClose={handleCloseBeingSent} severity="info">
+                <AlertPerso onClose={handleCloseBeingSent} severity="info">
                     Sending email ...
-                </Alert>
+                </AlertPerso>
             </Snackbar>
             <Snackbar open={openError} autoHideDuration={6000} onClose={handleCloseError}>
-                <Alert onClose={handleCloseError} severity="error">
+                <AlertPerso onClose={handleCloseError} severity="error">
                     Please complete the form
-                </Alert>
+                </AlertPerso>
             </Snackbar>
             <Snackbar open={openNotworking} autoHideDuration={6000} onClose={handleCloseNotWorking}>
-                <Alert onClose={handleCloseNotWorking} severity="error">
+                <AlertPerso onClose={handleCloseNotWorking} severity="error">
                     Error happened
-                </Alert>
+                </AlertPerso>
             </Snackbar>
         </div >
     );

@@ -31,12 +31,13 @@ const headerStyle = {
     },
     container: {
         ...container,
-        minHeight: "50px",
+        minHeight: "50px !important",
         flex: "1",
         alignItems: "center",
         justifyContent: "space-between",
         display: "flex",
-        flexWrap: "nowrap"
+        flexWrap: "nowrap",
+        padding: "0px 15px !important"
     },
     flex: {
         flex: 1
@@ -85,7 +86,7 @@ const headerStyle = {
         }
     },
     transparent: {
-        backgroundColor: "transparent !important",
+        backgroundColor: "transparent",
         boxShadow: "none",
         paddingTop: "25px",
         color: "#FFFFFF",
@@ -95,7 +96,7 @@ const headerStyle = {
     },
     dark: {
         color: "#FFFFFF",
-        backgroundColor: "#212121 !important",
+        backgroundColor: "#212121",
         boxShadow:
             "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)"
     },

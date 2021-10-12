@@ -11,11 +11,31 @@ const profilePageStyle = {
         margin: '0 auto',
         padding: "0px 30px 0px 30px",
     },
+    flippedContainer: {
+
+        "& .MuiGrid-item": {
+            padding: "0px"
+        }
+    },
+
+    flippedCardAction: {
+        "& .MuiGrid-item": {
+            padding: "0px"
+        }
+    },
+    projectContainer: {
+        "& .MuiGrid-item": {
+            padding: "0px"
+        }
+    },
     containbig: {
         maxWidth: "1420px",
         margin: '0 auto',
         padding: window.innerWidth >= settings.mobile ? "0px 30px 0px 30px" : "0px 10px 0px 10px",
         width: "100% !important",
+        "& .MuiGrid-item": {
+            padding: "12px"
+        }
     },
     profile: {
         padding: "0px 20px 0px 0px",
@@ -172,7 +192,8 @@ const profilePageStyle = {
     iconbutton: {
         "&:hover": {
             backgroundColor: "#ffffff00"
-        }
+        },
+        padding: "12px"
     },
     showmaskText: {
         padding: "0px 0px 0px 40px",
@@ -195,6 +216,9 @@ const profilePageStyle = {
             color: "rgba(0, 0, 0, 0.54)"
         }
     },
+
+
+
 };
 
 export default profilePageStyle;

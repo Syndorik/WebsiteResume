@@ -30,6 +30,10 @@ const profilePageStyle = {
         color: "#ffffff",
         backgroundColor: "#313131",
         whiteSpace: "nowrap",
+        "&:hover": {
+            backgroundColor: "#d5d5d5"
+
+        }
 
     },
     ...imagesStyle,

@@ -1,19 +1,22 @@
 import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+// @mui/material/ components
+import { makeStyles } from "@mui/styles";
 import Header from "components/Header/Header.js";
 import Parallax from "components/Parallax/Parallax.js";
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import profileP from "assets/img/profile-bg.jpg"
 
-// @material-ui/icons
-import GetAppIcon from '@material-ui/icons/GetApp';
-import EmailIcon from '@material-ui/icons/Email';
-import PhoneIcon from '@material-ui/icons/Phone';
-import HomeIcon from '@material-ui/icons/Home';
-import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+// @mui/icons-material
+import GetAppIcon from '@mui/icons-material/GetApp';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import HomeIcon from '@mui/icons-material/Home';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+
+
+import { styled } from '@mui/material/styles';
+
 
 import profile from "assets/img/faces/alex.png";
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
@@ -21,16 +24,25 @@ import { Link } from "react-router-dom"
 import settings from 'conf/config.js'
 
 
-const useStyles = makeStyles(styles);
+const DownloadButton = styled(Button)(styles.downloadButton)
+const MainDiv = styled('div')({ ...styles.main, ...styles.mainRaised })
+const ImageProf = styled('img')({
+    ...styles.imgRaised,
+    ...styles.imgRoundedCircle,
+    ...styles.imgFluid
+})
+const FontH1 = styled('h1')({
+    ...styles.fonth1
+})
+const DivFont = styled('div')({
+    ...styles.font
+})
+const ParFont = styled('p')({
+    ...styles.font
+})
 
 export default function ProfilePage(props) {
-    const classes = useStyles();
     const { ...rest } = props;
-    const imageClasses = classNames(
-        classes.imgRaised,
-        classes.imgRoundedCircle,
-        classes.imgFluid
-    );
 
     React.useEffect(() => {
         window.scrollTo(0, 0)
@@ -38,16 +50,19 @@ export default function ProfilePage(props) {
 
 
     const alignedIcons = (icon, text) => {
-        return <div className={classes.font}>
-            <Grid container direction="row" alignItems="center" spacing={2}>
-                <Grid item>
+        return <Grid container direction="row" alignItems="center" spacing={0} sx={{ margin: "-8px" }}>
+            <Grid item sx={{ padding: "8px" }}>
+                <DivFont>
                     {icon}
-                </Grid>
-                <Grid item>
-                    {text}
-                </Grid>
+                </DivFont>
             </Grid>
-        </div>
+            <Grid item sx={{ padding: "8px" }}>
+                <DivFont>
+                    {text}
+                </DivFont>
+            </Grid>
+        </Grid>
+
     }
 
     return (
@@ -62,39 +77,39 @@ export default function ProfilePage(props) {
                 }}
                 {...rest}
             />
-            <Parallax small filter image={require("assets/img/profile-bg.jpg")} />
-            <div className={classNames(classes.main, classes.mainRaised)}>
-                <Grid container alignItems="center" justify="center" className={classes.contain}>
-                    <Grid item xs={12} sm={4} className={classes.profile}>
+            <Parallax small filter image={profileP} />
+            <MainDiv >
+                <Grid container alignItems="center" justifyContent="center" sx={styles.contain}>
+                    <Grid item xs={12} sm={4} sx={styles.profile}>
                         <div >
                             <div style={window.innerWidth >= settings.mobile ? undefined : { textAlign: "center", marginBottom: "20px" }}>
-                                <img src={profile} alt="..." className={imageClasses} />
+                                <ImageProf src={profile} alt="..." />
                             </div>
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={8}>
-                        <h1 className={classes.fonth1}>About Me</h1>
-                        <p className={classes.font}>
+                        <FontH1>About Me</FontH1>
+                        <ParFont>
                             I undertook two masters in AI/Machine learning: one at IMT Atlantique
                             (formerly Télécom Bretagne) and one at Imperial College of London both completed with the
                             highest honours. I specialised in NLP with a master thesis in topic modeling: I was working
                             with the Centre of Psychedelic Research of Imperial and developped a new model based on
                             BERT with state of the art results. I like to discover new methods and apply them in
                             personal projects.
-                        </p>
+                        </ParFont>
                     </Grid>
 
-                    <Grid item xs={12} sm={4} className={classes.profile} />
+                    <Grid item xs={12} sm={4} sx={styles.profile} />
                     <Grid item xs={12} sm={8}>
-                        <Grid container className={classes.addMargin}>
+                        <Grid container sx={styles.addMargin}>
                             <Grid item xs={window.innerWidth >= settings.mobile ? 6 : 12}>
-                                <h1 className={classes.fonth1}>Contact Details</h1>
+                                <FontH1>Contact Details</FontH1>
                             </Grid>
-                            {window.innerWidth >= settings.mobile ? <Grid item xs={6} align="right" className={classes.margin}>
+                            {window.innerWidth >= settings.mobile ? <Grid item xs={6} align="right" sx={styles.margin}>
                                 <Link to="/files/resume.pdf" target="_blank" download>
-                                    <Button size="large" variant="contained" startIcon={<GetAppIcon />} className={classes.downloadButton}>
+                                    <DownloadButton size="large" variant="contained" startIcon={<GetAppIcon />}>
                                         Download Resume
-                                    </Button>
+                                    </DownloadButton>
                                 </Link>
                             </Grid> : ""}
                         </Grid>
@@ -103,18 +118,18 @@ export default function ProfilePage(props) {
                         {alignedIcons(<HomeIcon />, "Paris, France")}
                         {alignedIcons(<PhoneIcon />, "+33648080121")}
                         {alignedIcons(<EmailIcon />, "alexandre.allani19@imperial.ac.uk")}
-                        {window.innerWidth <= settings.mobile ? <Grid item xs={12} align="right" className={classes.margin}>
+                        {window.innerWidth <= settings.mobile ? <Grid item xs={12} align="right" sx={styles.margin}>
                             <Link to="/files/resume.pdf" target="_blank" download>
-                                <Button size="large" variant="contained" startIcon={<GetAppIcon />} className={classes.downloadButton} style={{ marginTop: "10px" }}>
+                                <DownloadButton size="large" variant="contained" startIcon={<GetAppIcon />} style={{ marginTop: "10px" }}>
                                     Download Resume
-                                    </Button>
+                                </DownloadButton>
                             </Link>
                         </Grid> : ""}
 
                     </Grid>
 
                 </Grid>
-            </div>
+            </MainDiv>
         </div>
     );
 }

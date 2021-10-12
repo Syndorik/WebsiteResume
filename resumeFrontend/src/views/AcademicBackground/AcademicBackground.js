@@ -1,43 +1,74 @@
 import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
 import Header from "components/Header/Header.js";
 import Parallax from "components/Parallax/Parallax.js";
-import Grid from '@material-ui/core/Grid';
-import Grow from '@material-ui/core/Grow';
+import Grid from '@mui/material/Grid';
+import Grow from '@mui/material/Grow';
 
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
-import IconButton from '@material-ui/core/IconButton';
-import Divider from '@material-ui/core/Divider';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import IconButton from '@mui/material/IconButton';
+import Divider from '@mui/material/Divider';
+import { styled } from '@mui/material/styles';
+
 
 import styles from "assets/jss/material-kit-react/views/academicBackground.js";
+import profileP from "assets/img/profile-bg.jpg"
 
+const H3Font = styled("h3")({
+    ...styles.fonth3
+})
+const MarginPargraph = styled("p")({
+    ...styles.marginP
+})
+const ItalicSpan = styled("span")({
+    ...styles.fonttype, ...styles.fontItalic
+})
+const FontSpan = styled("span")({
+    ...styles.fonttype
+})
 
-const useStyles = makeStyles(styles);
+const BoldSpan = styled("span")({
+    ...styles.opensansbold
+})
+const SemiBoldSpan = styled("span")({
+    ...styles.opensanssemibold
+})
+const MaskedSpan = styled("span")({
+    ...styles.showmaskText
+})
 
+const FontClassicSpan = styled("span")({
+    ...styles.fontClassic
+})
+const MarginDiv = styled("div")({
+    ...styles.marginSwap, ...styles.fontClassic
+})
+
+const StyledIconB = styled(IconButton)({
+    ...styles.iconbutton
+})
+
+const MainDiv = styled('div')({ ...styles.main, ...styles.mainRaised })
+const StyledUl = styled('ul')({ ...styles.ul })
 
 export default function ProfilePage(props) {
-    const classes = useStyles();
     const { ...rest } = props;
 
 
     const addexp = (where, arr) => {
         return <div>
-            <h3 className={classes.fonth3}>{where}</h3>
+            <H3Font>{where}</H3Font>
             {arr.map(([type, date, city, description], index) => {
                 return <span key={index}>
-                    <p className={classes.marginP}>
-                        <span className={classNames(classes.fonttype, classes.fontItalic)}>{type}</span>
-                        <span className={classes.fonttype}> • </span>
-                        <span className={classes.fontClassic}>{city}</span>
-                        <span className={classes.fonttype}> • </span>
-                        <span className={classes.fontClassic}>{date}</span></p>
-                    <div className={classNames(classes.marginSwap, classes.fontClassic)}>
+                    <MarginPargraph>
+                        <ItalicSpan>{type}</ItalicSpan>
+                        <FontSpan> • </FontSpan>
+                        <FontClassicSpan>{city}</FontClassicSpan>
+                        <FontSpan> • </FontSpan>
+                        <FontClassicSpan>{date}</FontClassicSpan></MarginPargraph>
+                    <MarginDiv >
                         {description}
-                    </div>
+                    </MarginDiv>
                 </span>
             })}
 
@@ -58,22 +89,22 @@ export default function ProfilePage(props) {
 
         return <span>
             {checkedAbstract ?
-                <span className={classes.opensansbold}>
-                    <IconButton className={classes.iconbutton} edge='start' onClick={handleChange}>
+                <BoldSpan>
+                    <StyledIconB edge='start' onClick={handleChange}>
                         <RemoveIcon />
-                    </IconButton>
-            Mask {nameShow} <br />
-                </span> :
-                <span className={classes.opensansbold}>
-                    <IconButton className={classes.iconbutton} edge='start' onClick={handleChange}>
+                    </StyledIconB>
+                    Mask {nameShow} <br />
+                </BoldSpan> :
+                <BoldSpan>
+                    <StyledIconB edge='start' onClick={handleChange}>
                         <AddIcon />
-                    </IconButton>
-            Show {nameShow} <br />
-                </span>
+                    </StyledIconB>
+                    Show {nameShow} <br />
+                </BoldSpan>
             }
             <span>
                 <Grow in={checkedAbstract} mountOnEnter unmountOnExit>
-                    <span className={classes.showmaskText}> {toShow}</span>
+                    <MaskedSpan > {toShow}</MaskedSpan>
                 </Grow>
             </span>
         </span>
@@ -91,10 +122,10 @@ export default function ProfilePage(props) {
                 }}
                 {...rest}
             />
-            <Parallax small filter image={require("assets/img/profile-bg.jpg")} />
-            <div className={classNames(classes.main, classes.mainRaised)}>
-                <Grid container justify="center" className={classes.contain}>
-                    <Grid item xs={12} sm={2} className={classNames(classes.profile, classes.sideTitle, classes.addMarginh1)}>
+            <Parallax small filter image={profileP} />
+            <MainDiv>
+                <Grid container justify="center" sx={styles.contain}>
+                    <Grid item xs={12} sm={2} sx={{ ...styles.sideTitle, ...styles.profile, ...styles.addMarginh1 }}>
                         <span>Work</span>
                     </Grid>
                     <Grid item xs={12} sm={10}>
@@ -105,17 +136,17 @@ export default function ProfilePage(props) {
                                     "03/2020 - 09/2020",
                                     "London, United Kingdom",
                                     <span>
-                                        <span><span className={classes.opensansbold}>Name :</span> Natural Language Processing of the Psychedelic State as Induced by DMT <br /></span>
-                                        <span><span className={classes.opensansbold}>Subject:</span> Topic modeling<br /></span>
+                                        <span><BoldSpan>Name :</BoldSpan> Natural Language Processing of the Psychedelic State as Induced by DMT <br /></span>
+                                        <span><BoldSpan>Subject:</BoldSpan> Topic modeling<br /></span>
                                         <span>Contributions:<br /></span>
-                                        <ul className={classes.ul}>
-                                            <li>Analysed <span className={classes.opensanssemibold}>interviews</span> from the Centre of Psychedelic Research of Imperial
-                                    dealing with the effect of <span className={classes.opensanssemibold}>DMT</span> a psychedelic drug that puts its user into other realms.</li>
-                                            <li>Developed a <span className={classes.opensanssemibold}>brand new model using BERT</span> in topic modeling with
-                                        <span className={classes.opensanssemibold}> state of the art</span> results compared to Latent Dirichlet Allocation (PyTorch).</li>
+                                        <StyledUl>
+                                            <li>Analysed <SemiBoldSpan>interviews</SemiBoldSpan> from the Centre of Psychedelic Research of Imperial
+                                                dealing with the effect of <SemiBoldSpan>DMT</SemiBoldSpan> a psychedelic drug that puts its user into other realms.</li>
+                                            <li>Developed a <SemiBoldSpan>brand new model using BERT</SemiBoldSpan> in topic modeling with
+                                                <SemiBoldSpan> state of the art</SemiBoldSpan> results compared to Latent Dirichlet Allocation (PyTorch).</li>
                                             <li> Developed an evaluation pipeline to compare the LDA and BERT-based pipeline on a common ground.
-                                        Based on this, my pipeline returns <span className={classes.opensanssemibold}>significantly better results.</span></li>
-                                        </ul>
+                                                Based on this, my pipeline returns <SemiBoldSpan>significantly better results.</SemiBoldSpan></li>
+                                        </StyledUl>
                                         {GrowComp("Abstract", "The study of interviews dealing with the psychedelic state as induced by DMT can be fastidious and error-prone. The analysis of these interviews will vary from one researcher to another, because of the implicit bias they might have. Therefore the objective of this project is to find a model that does a coarse analysis of the interviews allowing researchers to have less biases towards them. As an answer, we propose two pipelines that retrieve topics from documents in an unsupervised manner. The first one uses Latent Dirichlet Allocation (LDA) to model topics. The second one uses BERT’s contextualised embeddings to model topics by applying a clustering algorithm on the embedding space. A strong emphasis is made on the evaluation and comparison of the two pipelines. A specific framework was developed for this matter. We achieved better results with the BERT-based pipeline compared to LDA on different datasets.")}
                                     </span>]])
                         }
@@ -126,22 +157,22 @@ export default function ProfilePage(props) {
                                     "03/2019 - 10/2019",
                                     "Paris, France",
                                     <span>
-                                        <span className={classes.opensansbold}>Data scientist for Cleep:<br /></span>
-                                        <ul className={classes.ul}>
-                                            <li><span className={classes.opensanssemibold}>Web scrapping</span> in NodeJS for Cleep, a startup specialised in fashion.
-                                            I retrieved main elements of shopping pages such as photos, prices, name of products...</li>
-                                            <li>Development of a <span className={classes.opensanssemibold}>recommendation engine</span> based on the web scrapped data for
-                                        Cleep using Java, Neo4j, ArangoDB. The recommendation engine was based
-                                            on graph traversal techniques.</li>
-                                        </ul>
-                                        <span className={classes.opensansbold}>Data engineer missions:<br /></span>
-                                        <ul className={classes.ul}>
-                                            <li>Participated in the creation of Sia Partners' <span className={classes.opensanssemibold}>new deployment system</span> using
-                                        Docker, DockerCompose, Gitlab CI/CD, Kubernetes, Google Cloud Platform,
-                                            PostgreSQL.</li>
-                                            <li><span className={classes.opensanssemibold}>Web Development back and front</span>: Created APIs and connected them to the new deployment platform using
-                                            Python-Flask and Docker.</li>
-                                        </ul>
+                                        <BoldSpan >Data scientist for Cleep:<br /></BoldSpan>
+                                        <StyledUl>
+                                            <li><SemiBoldSpan>Web scrapping</SemiBoldSpan> in NodeJS for Cleep, a startup specialised in fashion.
+                                                I retrieved main elements of shopping pages such as photos, prices, name of products...</li>
+                                            <li>Development of a <SemiBoldSpan>recommendation engine</SemiBoldSpan> based on the web scrapped data for
+                                                Cleep using Java, Neo4j, ArangoDB. The recommendation engine was based
+                                                on graph traversal techniques.</li>
+                                        </StyledUl>
+                                        <BoldSpan>Data engineer missions:<br /></BoldSpan>
+                                        <StyledUl>
+                                            <li>Participated in the creation of Sia Partners' <SemiBoldSpan>new deployment system</SemiBoldSpan> using
+                                                Docker, DockerCompose, Gitlab CI/CD, Kubernetes, Google Cloud Platform,
+                                                PostgreSQL.</li>
+                                            <li><SemiBoldSpan>Web Development back and front</SemiBoldSpan>: Created APIs and connected them to the new deployment platform using
+                                                Python-Flask and Docker.</li>
+                                        </StyledUl>
                                     </span>]]
 
                             )
@@ -154,9 +185,9 @@ export default function ProfilePage(props) {
                                     "07/2018 - 07/2018",
                                     "Paris, France",
                                     <span>
-                                        Produced a <span className={classes.opensanssemibold}>man-agent Interface </span>
+                                        Produced a <SemiBoldSpan>man-agent Interface </SemiBoldSpan>
                                         for a target simulator using
-                                        <span className={classes.opensanssemibold}> JavaFX</span>. The interface
+                                        <SemiBoldSpan> JavaFX</SemiBoldSpan>. The interface
                                         sets parameters to the target simulator through a TCP connection.
                                     </span>],
                                 [
@@ -164,7 +195,7 @@ export default function ProfilePage(props) {
                                     "07/2015 - 07/2015",
                                     "Paris, France",
                                     <span>
-                                        Produced a <span className={classes.opensanssemibold}>promotional video </span>
+                                        Produced a <SemiBoldSpan>promotional video </SemiBoldSpan>
                                         for an optronic mast.
                                     </span>]
                                 ]
@@ -178,7 +209,7 @@ export default function ProfilePage(props) {
                         <Divider />
                     </Grid>
 
-                    <Grid item xs={12} sm={2} className={classNames(classes.profile, classes.sideTitle, classes.addMarginh1)}>
+                    <Grid item xs={12} sm={2} sx={{ ...styles.sideTitle, ...styles.profile, ...styles.addMarginh1 }}>
                         <span>Education</span>
                     </Grid>
                     <Grid item xs={12} sm={10}>
@@ -190,18 +221,18 @@ export default function ProfilePage(props) {
                                     "09/2019 - 09/2020",
                                     "London, United Kingdom",
                                     <span>
-                                        <span className={classes.opensanssemibold}>Obtained Distinction (First class
-                                        honors).</span> Relevant courses: <span className={classes.opensanssemibold}>
-                                            Math </span>for Machine Learning, Reinforcement Learning, <span className={classes.opensanssemibold}>
-                                            Computer Vision, Deep Learning</span>, Machine
-                                        Learning for Imaging, <span className={classes.opensanssemibold}>NLP</span>,
+                                        <SemiBoldSpan>Obtained Distinction (First class
+                                            honors).</SemiBoldSpan> Relevant courses: <SemiBoldSpan>
+                                            Math </SemiBoldSpan>for Machine Learning, Reinforcement Learning, <SemiBoldSpan>
+                                            Computer Vision, Deep Learning</SemiBoldSpan>, Machine
+                                        Learning for Imaging, <SemiBoldSpan>NLP</SemiBoldSpan>,
                                         Principle of Distributed Ledgers.
                                         <div>
                                             {GrowComp(
                                                 "Course details",
                                                 <div>
-                                                    <span className={classes.opensansbold}>Core Courses:</span>
-                                                    <ul className={classes.ul}>
+                                                    <BoldSpan>Core Courses:</BoldSpan>
+                                                    <StyledUl>
                                                         <li>Reinforcement Learning: Markov Reward Process, Bellman's equation, Tabular Q learning, Deep Q Learning.</li>
                                                         <li>Machine Learning Basics: Core ML concepts, Decision Trees, Neural Network concepts, GMMs.</li>
                                                         <li>Computer Vision, features detection (edge/corners), SIFT/SURF descriptor, Region-based and texture-based classification, stereo matching, photometric stereo.</li>
@@ -209,12 +240,12 @@ export default function ProfilePage(props) {
                                                         <li>Machine Learning for Imaging: Convolutional Neural Network, Unet, Fast-RCNN, YOLO.</li>
                                                         <li>NLP: Naive Bayes Classifier, Pared trees (CKY algorithm), Sequence to sequence models (RNN, LSTM), UlmFit, Transformers, BERT.</li>
                                                         <li>Deep Learning, Convolutional Neural Networ, Recurrent Neural Network, Variationnal Auto Encoders, Generative Adversarial Network.</li>
-                                                    </ul>
-                                                    <span className={classes.opensansbold}>Minor Courses:</span>
-                                                    <ul className={classes.ul}>
+                                                    </StyledUl>
+                                                    <BoldSpan>Minor Courses:</BoldSpan>
+                                                    <StyledUl>
                                                         <li>Scalable Systems and Data : Study of databases core concepts and scalable computing.</li>
                                                         <li>Principle of Distributed Ledgers : Blockchain concepts.</li>
-                                                    </ul>
+                                                    </StyledUl>
                                                 </div>
                                             )}
 
@@ -233,25 +264,25 @@ export default function ProfilePage(props) {
                                     "Brest, France",
                                     <span>
                                         Degree completed with highest GPA score possible: 3.99/4. Relevant courses
-                                        include: <span className={classes.opensanssemibold}>Data science, </span>
-                                        <span className={classes.opensanssemibold}>Statistical Machine Learning,
-                                        Data mining,</span> Big Data, Decision-making. Devops,
+                                        include: <SemiBoldSpan>Data science, </SemiBoldSpan>
+                                        <SemiBoldSpan>Statistical Machine Learning,
+                                            Data mining,</SemiBoldSpan> Big Data, Decision-making. Devops,
                                         Mathematics for Signal Processing, Network.
                                         <div>
                                             {GrowComp(
                                                 "Course details",
                                                 <div>
-                                                    <span className={classes.opensansbold}>Core courses in the third year:</span>
-                                                    <ul className={classes.ul}>
+                                                    <BoldSpan>Core courses in the third year:</BoldSpan>
+                                                    <StyledUl>
                                                         <li>Statistical Machine Learning,</li>
                                                         <li>Inferential Statistics,</li>
                                                         <li>Data mining,</li>
                                                         <li>Big Data,</li>
                                                         <li>Business Intelligence,</li>
                                                         <li>Decision making.</li>
-                                                    </ul>
-                                                    <span className={classes.opensansbold}>Core courses in the first and second year :</span>
-                                                    <ul className={classes.ul}>
+                                                    </StyledUl>
+                                                    <BoldSpan>Core courses in the first and second year :</BoldSpan>
+                                                    <StyledUl>
                                                         <li>Computer Science,</li>
                                                         <li>DevOps (Docker/Openstack),⠀</li>
                                                         <li>Mathematics for signal processing,</li>
@@ -259,7 +290,7 @@ export default function ProfilePage(props) {
                                                         <li>Practical Works (Signal Processing problem using Matlab, Algorithm problems using Java/python, Electronics and Physics),</li>
                                                         <li>Electronics and physics,</li>
                                                         <li>Economics and Human Sciences.</li>
-                                                    </ul>
+                                                    </StyledUl>
                                                 </div>
                                             )}
 
@@ -277,8 +308,8 @@ export default function ProfilePage(props) {
                                     "02/2018 - 06/2018",
                                     "Daejeon, South-Korea",
                                     <span>
-                                        Relevant courses : Mobile Computing, <span className={classes.opensanssemibold}>
-                                            System Programming, Software Engineering.</span>
+                                        Relevant courses : Mobile Computing, <SemiBoldSpan>
+                                            System Programming, Software Engineering.</SemiBoldSpan>
                                     </span>]
                                 ]
 
@@ -317,7 +348,7 @@ export default function ProfilePage(props) {
                     </Grid>
 
                 </Grid>
-            </div>
+            </MainDiv>
         </div>
     );
 }

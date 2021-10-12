@@ -100,6 +100,7 @@ const profilePageStyle = {
         margin: "0px 0px 0px 0px"
     },
     iconbutton: {
+        padding: "12px",
         "&:hover": {
             backgroundColor: "#ffffff00"
         }

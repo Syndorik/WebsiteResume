@@ -10,6 +10,14 @@ const profilePageStyle = {
         maxWidth: "1020px",
         margin: '0 auto',
         padding: "0px 30px 0px 30px",
+        "& .MuiGrid-item": {
+            padding: "12px"
+        }
+    },
+    cardContainer: {
+        "& .MuiGrid-item": {
+            padding: "0px"
+        }
     },
     profile: {
         padding: "0px 20px 0px 0px",
