@@ -18,15 +18,12 @@ on:
 
 
 jobs:
-  build_and_push_to_registry_and_deploy:
+  build_and_push_to_registry:
     name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-      - run: echo $GITHUB_RUN_ID
-      - run: envsubst < deployment-frontend.yml > deployment-frontend-feed.yml
-      - run: cat deployment-frontend.yml
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
         with:
@@ -37,6 +34,15 @@ jobs:
           dockerfile: ./resumeFrontend/Dockerfile
           repository: syndorik/websiteresume/frontend
           tag_with_ref: true
+  deploy_to_gcp:
+    name: Deploy to GCP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - run: echo $GITHUB_RUN_ID
+      - run: envsubst < deployment-frontend.yml > deployment-frontend-feed.yml
+      - run: cat deployment-frontend.yml
       - name: Deploy frontend
         uses: ameydev/gke-kubectl-action@master
         env:
