@@ -35,6 +35,7 @@ jobs:
           repository: syndorik/websiteresume/frontend
           tag_with_ref: true
   deploy_to_gcp:
+    needs: build_and_push_to_registry
     name: Deploy to GCP
     runs-on: ubuntu-latest
     steps:

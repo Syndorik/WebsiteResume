@@ -43,7 +43,7 @@ export default function ProfilePage(props) {
             />
             <Parallax filterlight big image={profileP} >
                 <div className={classNames(classes.contain)} style={{ marginTop: '40px' }}>
-                    <h1 className={classes.fonth1}>I'm Someone.</h1>
+                    <h1 className={classes.fonth1}>I'm Someone. </h1>
                     <p className={classes.font}>
                         I am a <span className={classes.colorEmph}>datascientist</span> from Paris, I have
                         <span className={classes.colorEmph}> 2 masters</span> in this field including one at
